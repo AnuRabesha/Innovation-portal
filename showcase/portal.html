@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>CSE Innovation Portal – ACEW</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="css/home.css"/>
+<link rel="stylesheet" href="css/portal.css"/>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="nav-logo"><i class="fas fa-microchip"></i></div>
+    <div class="nav-brand-text">
+      <span class="nav-title">CSE Innovation Portal</span>
+      <span class="nav-tagline">ACEW • Department of CSE</span>
+    </div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" class="active" data-page="home">Home</a></li>
+    <li><a href="#" data-page="explore">Explore</a></li>
+    <li><a href="#" data-page="about">About</a></li>
+    <li><a href="#" data-page="contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon-btn"><i class="fas fa-search"></i></button>
+    <button class="nav-icon-btn notif-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+    <div class="nav-profile" id="navProfile" onclick="toggleDropdown()">
+      <div class="profile-avatar" id="navAvatar">S</div>
+      <div class="nav-profile-text">
+        <span class="profile-label" id="navUserName">Student</span>
+        <span class="nav-portal-badge" id="navPortalBadge">Student Portal</span>
+      </div>
+      <i class="fas fa-chevron-down profile-arrow" id="profileArrow"></i>
+      <div class="profile-dropdown" id="profileDropdown">
+        <div class="dropdown-user-info">
+          <div class="dropdown-avatar" id="dropdownAvatar">S</div>
+          <div>
+            <div class="dropdown-name" id="dropdownName">Student</div>
+            <div class="dropdown-portal" id="dropdownPortal">Student Portal</div>
+          </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <a href="#"><i class="fas fa-user"></i> My Profile</a>
+        <a href="#"><i class="fas fa-trophy"></i> My Achievements</a>
+        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+        <div class="dropdown-divider"></div>
+        <a href="#" onclick="doLogout()" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </div>
+  </div>
+  <button class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ═══ WELCOME BANNER ═══ -->
+<div class="welcome-banner" id="welcomeBanner" style="display:none;">
+  <div class="welcome-inner">
+    <div class="welcome-left">
+      <div class="welcome-avatar" id="welcomeAvatar">S</div>
+      <div class="welcome-text">
+        <span class="welcome-greeting" id="welcomeGreeting">Welcome!</span>
+        <span class="welcome-name" id="welcomeName">Good Morning</span>
+      </div>
+      <span class="welcome-portal-badge" id="welcomePortalBadge">Student Portal</span>
+    </div>
+    <div class="welcome-right">
+      <span class="welcome-date" id="welcomeDate"></span>
+      <button class="welcome-dismiss" onclick="dismissWelcome()"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="circuit-bg" aria-hidden="true">
+      <svg width="100%" height="100%" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+        <g stroke="rgba(249,115,22,0.07)" stroke-width="1" fill="none">
+          <line x1="0" y1="120" x2="1440" y2="120"/><line x1="0" y1="280" x2="1440" y2="280"/>
+          <line x1="0" y1="440" x2="1440" y2="440"/><line x1="0" y1="600" x2="1440" y2="600"/>
+          <line x1="180" y1="0" x2="180" y2="800"/><line x1="420" y1="0" x2="420" y2="800"/>
+          <line x1="660" y1="0" x2="660" y2="800"/><line x1="900" y1="0" x2="900" y2="800"/>
+          <line x1="1140" y1="0" x2="1140" y2="800"/><line x1="1380" y1="0" x2="1380" y2="800"/>
+          <path d="M0,200 L120,200 L120,160 L300,160 L300,200 L480,200"/>
+          <path d="M600,320 L720,320 L720,280 L900,280 L900,360 L1080,360"/>
+          <path d="M0,500 L60,500 L60,440 L240,440 L240,520 L420,520"/>
+          <circle cx="120" cy="200" r="3" fill="rgba(249,115,22,0.2)"/>
+          <circle cx="720" cy="280" r="3" fill="rgba(249,115,22,0.2)"/>
+          <circle cx="420" cy="280" r="5" fill="none" stroke="rgba(249,115,22,0.15)"/>
+          <circle cx="420" cy="280" r="2" fill="rgba(249,115,22,0.25)"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-glow g1"></div><div class="hero-glow g2"></div><div class="hero-glow g3"></div>
+    <div class="hero-content">
+      <div class="hero-top-badge"><span class="htb-dot"></span><i class="fas fa-microchip"></i> Innovation Hub</div>
+      <button class="hero-ai-btn" onclick="showPage('explore')">
+        <span class="ai-btn-glow"></span><i class="fas fa-robot"></i>
+        <span>Explore with the AI Innovation Assistant</span>
+        <span class="ai-btn-arrow">→</span>
+      </button>
+      <h1 class="hero-main-heading">
+        <span class="hmh-line1">CSE Department Showcase</span>
+        <span class="hmh-line2">&amp; Innovation Portal</span>
+      </h1>
+      <p class="hero-subtitle">Discover student projects, hackathons, research, patents, and startup ideas<br class="hero-br"/> from Arunachala College of Engineering for Women.</p>
+      <div class="hero-search-wrap">
+        <div class="hero-search-bar">
+          <i class="fas fa-search hero-search-icon"></i>
+          <input type="text" id="heroSearch" placeholder="Search projects, students, technologies..." autocomplete="off"/>
+          <button class="hero-search-btn" onclick="handleHeroSearch()">Search</button>
+        </div>
+        <div class="hero-filters">
+          <button class="hf-btn active" data-filter="all">All</button>
+          <button class="hf-btn" data-filter="hackathon">Hackathons</button>
+          <button class="hf-btn" data-filter="research">Research</button>
+          <button class="hf-btn" data-filter="patent">Patents</button>
+          <button class="hf-btn" data-filter="startup">Startups</button>
+          <button class="hf-btn" data-filter="project">Projects</button>
+        </div>
+      </div>
+      <div class="hero-stats-row">
+        <div class="hsr-stat"><span class="hsr-num" id="hStat1">240+</span><span class="hsr-label">Students</span></div>
+        <div class="hsr-div"></div>
+        <div class="hsr-stat"><span class="hsr-num" id="hStat2">312+</span><span class="hsr-label">Achievements</span></div>
+        <div class="hsr-div"></div>
+        <div class="hsr-stat"><span class="hsr-num" id="hStat3">17</span><span class="hsr-label">Categories</span></div>
+        <div class="hsr-div"></div>
+        <div class="hsr-stat"><span class="hsr-num">18</span><span class="hsr-label">Faculty</span></div>
+        <div class="hsr-div"></div>
+        <div class="hsr-stat"><span class="hsr-num">92%</span><span class="hsr-label">Placement</span></div>
+      </div>
+      <div class="hero-bottom-link">
+        <a href="#" class="hbl-link" onclick="showPage('about');return false;">
+          <i class="fas fa-graduation-cap"></i> Education for everyone <span class="hbl-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <div class="portal-wrap">
+
+    <!-- Student Portal Card -->
+    <div class="student-portal-card">
+      <div class="spc-icon"><i class="fas fa-user-graduate"></i></div>
+      <div class="spc-text">
+        <h2>Student Portal</h2>
+        <p>Access your achievements, submit projects, track rankings, and explore the CSE Innovation Hub — all in one place.</p>
+      </div>
+      <div class="spc-actions">
+        <button class="spc-btn spc-btn-primary" onclick="window.location.href='submit.html'"><i class="fas fa-paper-plane"></i> Submit Project</button>
+        <button class="spc-btn spc-btn-outline" onclick="window.location.href='achievements.html'">View Achievements</button>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="blk-title"><i class="fas fa-chart-bar"></i> Quick Statistics</div>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(249,115,22,0.12);color:#f97316;"><i class="fas fa-users"></i></div>
+        <div class="stat-num">240+</div><div class="stat-label">Students Enrolled</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;"><i class="fas fa-trophy"></i></div>
+        <div class="stat-num">312+</div><div class="stat-label">Achievements</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fas fa-flask"></i></div>
+        <div class="stat-num">8</div><div class="stat-label">Laboratories</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(16,185,129,0.12);color:#10b981;"><i class="fas fa-percentage"></i></div>
+        <div class="stat-num">92%</div><div class="stat-label">Placement Rate</div>
+      </div>
+    </div>
+
+    <!-- Labs -->
+    <div class="blk-title"><i class="fas fa-laptop-code"></i> Laboratories &amp; Facilities</div>
+    <div class="lab-grid">
+      <div class="lab-card-p"><i class="fas fa-desktop"></i><span>Programming Lab</span><small>60 Systems</small></div>
+      <div class="lab-card-p"><i class="fas fa-network-wired"></i><span>Networking Lab</span><small>40 Systems</small></div>
+      <div class="lab-card-p"><i class="fas fa-brain"></i><span>AI &amp; ML Lab</span><small>GPU Workstations</small></div>
+      <div class="lab-card-p"><i class="fas fa-shield-alt"></i><span>Cyber Security Lab</span><small>Dedicated Servers</small></div>
+      <div class="lab-card-p"><i class="fas fa-microchip"></i><span>IoT Lab</span><small>Arduino / Raspberry Pi</small></div>
+      <div class="lab-card-p"><i class="fas fa-project-diagram"></i><span>Project Lab</span><small>24/7 Access</small></div>
+      <div class="lab-card-p"><i class="fas fa-book-open"></i><span>Digital Library</span><small>10,000+ e-Books</small></div>
+      <div class="lab-card-p"><i class="fas fa-chalkboard"></i><span>Smart Classrooms</span><small>Interactive Boards</small></div>
+    </div>
+
+    <!-- PEO & PSO -->
+    <div class="blk-title"><i class="fas fa-star"></i> Program Educational Objectives &amp; Specific Outcomes</div>
+    <div class="peo-grid">
+      <div class="peo-card">
+        <div class="blk-title" style="font-size:0.72rem;margin-bottom:0;border:none;padding:0;"><i class="fas fa-bullseye"></i> PEO – Educational Objectives</div>
+        <ul>
+          <li><span class="peo-num">PEO 1</span> Graduates will apply CS fundamentals to solve complex engineering problems.</li>
+          <li><span class="peo-num">PEO 2</span> Graduates will demonstrate professional skills and ethical responsibility.</li>
+          <li><span class="peo-num">PEO 3</span> Graduates will engage in lifelong learning and research.</li>
+          <li><span class="peo-num">PEO 4</span> Graduates will contribute to entrepreneurship and innovation.</li>
+        </ul>
+      </div>
+      <div class="peo-card">
+        <div class="blk-title" style="font-size:0.72rem;margin-bottom:0;border:none;padding:0;"><i class="fas fa-code"></i> PSO – Specific Outcomes</div>
+        <ul>
+          <li><span class="peo-num">PSO 1</span> Design and develop software solutions using modern programming paradigms.</li>
+          <li><span class="peo-num">PSO 2</span> Apply AI, ML, and data science techniques to real-world problems.</li>
+          <li><span class="peo-num">PSO 3</span> Build secure, scalable, and efficient networked systems.</li>
+          <li><span class="peo-num">PSO 4</span> Demonstrate project management and teamwork in software development.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Recent Highlights -->
+    <div class="blk-title"><i class="fas fa-fire"></i> Recent Innovation Highlights</div>
+    <div class="highlight-grid">
+      <div class="hl-card">
+        <span class="hl-tag" style="background:rgba(249,115,22,0.12);color:#f97316;border:1px solid rgba(249,115,22,0.3);">Hackathon</span>
+        <div class="hl-title">Smart Agriculture IoT System – SIH 2024 Finalist</div>
+        <div class="hl-meta">
+          <span><i class="fas fa-user"></i> Priya R, Batch 2022–26</span>
+          <span><i class="fas fa-calendar"></i> 2024–25</span>
+          <span><i class="fas fa-map-marker-alt"></i> Smart India Hackathon</span>
+        </div>
+      </div>
+      <div class="hl-card">
+        <span class="hl-tag" style="background:rgba(139,92,246,0.12);color:#8b5cf6;border:1px solid rgba(139,92,246,0.3);">Research</span>
+        <div class="hl-title">Deep Learning for Medical Image Segmentation</div>
+        <div class="hl-meta">
+          <span><i class="fas fa-user"></i> Anitha K, Batch 2023–27</span>
+          <span><i class="fas fa-calendar"></i> 2024–25</span>
+          <span><i class="fas fa-map-marker-alt"></i> IEEE Conference</span>
+        </div>
+      </div>
+      <div class="hl-card">
+        <span class="hl-tag" style="background:rgba(6,182,212,0.12);color:#06b6d4;border:1px solid rgba(6,182,212,0.3);">Patent</span>
+        <div class="hl-title">AI-Powered Water Quality Monitoring Device</div>
+        <div class="hl-meta">
+          <span><i class="fas fa-user"></i> Meena S, Batch 2022–26</span>
+          <span><i class="fas fa-calendar"></i> 2024–25</span>
+          <span><i class="fas fa-map-marker-alt"></i> Indian Patent Office</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portal Navigation Cards -->
+    <div class="blk-title"><i class="fas fa-th-large"></i> Explore the Portal</div>
+    <div class="card-grid-3">
+      <div class="info-card" onclick="window.location.href='top-performers.html'" style="cursor:pointer;">
+        <div class="info-card-icon" style="background:rgba(249,115,22,0.12);color:#f97316;"><i class="fas fa-trophy"></i></div>
+        <h3>Top Performers</h3>
+        <p>Ranked list of students with the most verified achievements and highest scores.</p>
+      </div>
+      <div class="info-card" onclick="window.location.href='achievements.html'" style="cursor:pointer;">
+        <div class="info-card-icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;"><i class="fas fa-star"></i></div>
+        <h3>Achievements</h3>
+        <p>Browse and search all student achievements by category, year or batch.</p>
+      </div>
+      <div class="info-card" onclick="window.location.href='analytics.html'" style="cursor:pointer;">
+        <div class="info-card-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fas fa-chart-bar"></i></div>
+        <h3>Analytics</h3>
+        <p>Visual insights on achievement trends across years and batches.</p>
+      </div>
+      <div class="info-card" onclick="window.location.href='submit.html'" style="cursor:pointer;">
+        <div class="info-card-icon" style="background:rgba(99,102,241,0.12);color:#6366f1;"><i class="fas fa-paper-plane"></i></div>
+        <h3>Submit Project</h3>
+        <p>Submit your project or achievement for faculty verification and public showcase.</p>
+      </div>
+      <div class="info-card" onclick="window.location.href='categories.html'" style="cursor:pointer;">
+        <div class="info-card-icon" style="background:rgba(16,185,129,0.12);color:#10b981;"><i class="fas fa-folder-open"></i></div>
+        <h3>Categories</h3>
+        <p>Explore achievements grouped by innovation, research, technical and more.</p>
+      </div>
+      <div class="info-card" onclick="window.location.href='top-performers.html'" style="cursor:pointer;">
+        <div class="info-card-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fas fa-medal"></i></div>
+        <h3>Rankings</h3>
+        <p>See the full leaderboard with tier badges, score breakdowns and podium.</p>
+      </div>
+    </div>
+
+  </div><!-- /portal-wrap -->
+</div><!-- /page-home -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: EXPLORE
+═══════════════════════════════════════ -->
+<div id="page-explore" class="page">
+  <div class="pt-hero pt-hero-purple">
+    <div class="pt-hero-inner">
+      <div class="pt-icon pt-icon-purple"><i class="fas fa-compass"></i></div>
+      <h1 class="pt-title">Explore CSE Resources</h1>
+      <p class="pt-desc">Discover labs, student projects, hackathons, workshops, AI/ML resources, cybersecurity tools, and research opportunities.</p>
+    </div>
+  </div>
+
+  <div class="portal-wrap">
+
+    <!-- Search & Filter -->
+    <div class="explore-search-bar">
+      <input type="text" id="exploreSearch" placeholder="&#xf002;  Search resources, labs, events..." oninput="filterExplore()"/>
+    </div>
+    <div class="explore-filter-pills" id="explorePills">
+      <button class="efp active" data-cat="all">All</button>
+      <button class="efp" data-cat="lab">Labs</button>
+      <button class="efp" data-cat="project">Projects</button>
+      <button class="efp" data-cat="hackathon">Hackathons</button>
+      <button class="efp" data-cat="workshop">Workshops</button>
+      <button class="efp" data-cat="ai">AI / ML</button>
+      <button class="efp" data-cat="cyber">Cybersecurity</button>
+      <button class="efp" data-cat="coding">Coding</button>
+      <button class="efp" data-cat="research">Research</button>
+    </div>
+
+    <!-- Resource Cards Grid -->
+    <div class="card-grid-3" id="exploreGrid">
+
+      <div class="res-card" data-cat="lab">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(249,115,22,0.12);color:#f97316;"><i class="fas fa-desktop"></i></div>
+          <span class="res-tag" style="background:rgba(249,115,22,0.1);color:#f97316;border:1px solid rgba(249,115,22,0.25);">Lab</span>
+        </div>
+        <h3>Programming Lab</h3>
+        <p>60-system lab with C, C++, Java, Python, and web development environments. Available 8 AM – 8 PM daily.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-desktop" style="color:#f97316;margin-right:4px;"></i>60 Systems</span><button class="res-card-btn">Explore</button></div>
+      </div>
+
+      <div class="res-card" data-cat="lab">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fas fa-network-wired"></i></div>
+          <span class="res-tag" style="background:rgba(6,182,212,0.1);color:#06b6d4;border:1px solid rgba(6,182,212,0.25);">Lab</span>
+        </div>
+        <h3>Networking Lab</h3>
+        <p>40-system lab with Cisco routers, switches, and packet tracer for hands-on networking practice.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-network-wired" style="color:#06b6d4;margin-right:4px;"></i>40 Systems</span><button class="res-card-btn">Explore</button></div>
+      </div>
+
+      <div class="res-card" data-cat="lab ai">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;"><i class="fas fa-brain"></i></div>
+          <span class="res-tag" style="background:rgba(139,92,246,0.1);color:#8b5cf6;border:1px solid rgba(139,92,246,0.25);">AI / ML</span>
+        </div>
+        <h3>AI &amp; ML Lab</h3>
+        <p>GPU workstations with TensorFlow, PyTorch, and Jupyter. Dedicated for deep learning and data science projects.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-microchip" style="color:#8b5cf6;margin-right:4px;"></i>GPU Workstations</span><button class="res-card-btn">Explore</button></div>
+      </div>
+
+      <div class="res-card" data-cat="lab cyber">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(239,68,68,0.12);color:#ef4444;"><i class="fas fa-shield-alt"></i></div>
+          <span class="res-tag" style="background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.25);">Cybersecurity</span>
+        </div>
+        <h3>Cyber Security Lab</h3>
+        <p>Dedicated servers for ethical hacking, penetration testing, network security, and CTF competitions.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-server" style="color:#ef4444;margin-right:4px;"></i>Dedicated Servers</span><button class="res-card-btn">Explore</button></div>
+      </div>
+
+      <div class="res-card" data-cat="lab">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(16,185,129,0.12);color:#10b981;"><i class="fas fa-microchip"></i></div>
+          <span class="res-tag" style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.25);">Lab</span>
+        </div>
+        <h3>IoT Lab</h3>
+        <p>Arduino, Raspberry Pi, ESP32 kits for building smart devices, automation systems, and IoT prototypes.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-wifi" style="color:#10b981;margin-right:4px;"></i>Arduino / RPi</span><button class="res-card-btn">Explore</button></div>
+      </div>
+
+      <div class="res-card" data-cat="lab project">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fas fa-project-diagram"></i></div>
+          <span class="res-tag" style="background:rgba(245,158,11,0.1);color:#f59e0b;border:1px solid rgba(245,158,11,0.25);">Project</span>
+        </div>
+        <h3>Project Lab</h3>
+        <p>24/7 accessible lab for final year and mini projects. Equipped with soldering stations and prototyping tools.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-clock" style="color:#f59e0b;margin-right:4px;"></i>24/7 Access</span><button class="res-card-btn">Explore</button></div>
+      </div>
+
+      <div class="res-card" data-cat="hackathon">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(249,115,22,0.12);color:#f97316;"><i class="fas fa-code"></i></div>
+          <span class="res-tag" style="background:rgba(249,115,22,0.1);color:#f97316;border:1px solid rgba(249,115,22,0.25);">Hackathon</span>
+        </div>
+        <h3>Smart India Hackathon</h3>
+        <p>National-level hackathon by AICTE. Students solve real government and industry problems in 36-hour sprints.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-users" style="color:#f97316;margin-right:4px;"></i>National Level</span><button class="res-card-btn">Register</button></div>
+      </div>
+
+      <div class="res-card" data-cat="hackathon">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(99,102,241,0.12);color:#6366f1;"><i class="fas fa-lightbulb"></i></div>
+          <span class="res-tag" style="background:rgba(99,102,241,0.1);color:#6366f1;border:1px solid rgba(99,102,241,0.25);">Hackathon</span>
+        </div>
+        <h3>Intra-College Ideathon</h3>
+        <p>Annual department-level ideathon where students pitch innovative solutions to real-world problems.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-calendar" style="color:#6366f1;margin-right:4px;"></i>Annual Event</span><button class="res-card-btn">Register</button></div>
+      </div>
+
+      <div class="res-card" data-cat="workshop">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fas fa-tools"></i></div>
+          <span class="res-tag" style="background:rgba(6,182,212,0.1);color:#06b6d4;border:1px solid rgba(6,182,212,0.25);">Workshop</span>
+        </div>
+        <h3>Full Stack Development</h3>
+        <p>3-day intensive workshop on React, Node.js, MongoDB. Hands-on project building with industry mentors.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-clock" style="color:#06b6d4;margin-right:4px;"></i>3 Days</span><button class="res-card-btn">Enroll</button></div>
+      </div>
+
+      <div class="res-card" data-cat="ai">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;"><i class="fas fa-robot"></i></div>
+          <span class="res-tag" style="background:rgba(139,92,246,0.1);color:#8b5cf6;border:1px solid rgba(139,92,246,0.25);">AI / ML</span>
+        </div>
+        <h3>Machine Learning Bootcamp</h3>
+        <p>Supervised, unsupervised, and reinforcement learning with scikit-learn and TensorFlow. Certificate provided.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-certificate" style="color:#8b5cf6;margin-right:4px;"></i>Certificate</span><button class="res-card-btn">Enroll</button></div>
+      </div>
+
+      <div class="res-card" data-cat="cyber">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(239,68,68,0.12);color:#ef4444;"><i class="fas fa-lock"></i></div>
+          <span class="res-tag" style="background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.25);">Cybersecurity</span>
+        </div>
+        <h3>Ethical Hacking Course</h3>
+        <p>Learn penetration testing, vulnerability assessment, and network security with real-world CTF challenges.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-shield-alt" style="color:#ef4444;margin-right:4px;"></i>Hands-on CTF</span><button class="res-card-btn">Enroll</button></div>
+      </div>
+
+      <div class="res-card" data-cat="coding">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(16,185,129,0.12);color:#10b981;"><i class="fas fa-terminal"></i></div>
+          <span class="res-tag" style="background:rgba(16,185,129,0.1);color:#10b981;border:1px solid rgba(16,185,129,0.25);">Coding</span>
+        </div>
+        <h3>Competitive Programming Club</h3>
+        <p>Weekly coding contests on LeetCode, CodeChef, and HackerRank. Prepare for FAANG and product company interviews.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-code" style="color:#10b981;margin-right:4px;"></i>Weekly Contests</span><button class="res-card-btn">Join</button></div>
+      </div>
+
+      <div class="res-card" data-cat="research">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fas fa-flask"></i></div>
+          <span class="res-tag" style="background:rgba(245,158,11,0.1);color:#f59e0b;border:1px solid rgba(245,158,11,0.25);">Research</span>
+        </div>
+        <h3>Research Paper Publication</h3>
+        <p>Guidance for publishing in IEEE, Springer, and Scopus-indexed journals. Faculty mentorship available.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-book" style="color:#f59e0b;margin-right:4px;"></i>IEEE / Scopus</span><button class="res-card-btn">Apply</button></div>
+      </div>
+
+      <div class="res-card" data-cat="project">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(249,115,22,0.12);color:#f97316;"><i class="fas fa-rocket"></i></div>
+          <span class="res-tag" style="background:rgba(249,115,22,0.1);color:#f97316;border:1px solid rgba(249,115,22,0.25);">Project</span>
+        </div>
+        <h3>Startup Incubation Cell</h3>
+        <p>Turn your idea into a startup. Get mentorship, seed funding guidance, and industry connections through ACEW's incubation cell.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-lightbulb" style="color:#f97316;margin-right:4px;"></i>Incubation</span><button class="res-card-btn">Apply</button></div>
+      </div>
+
+      <div class="res-card" data-cat="workshop">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(99,102,241,0.12);color:#6366f1;"><i class="fas fa-cloud"></i></div>
+          <span class="res-tag" style="background:rgba(99,102,241,0.1);color:#6366f1;border:1px solid rgba(99,102,241,0.25);">Workshop</span>
+        </div>
+        <h3>Cloud Computing &amp; AWS</h3>
+        <p>Hands-on AWS workshop covering EC2, S3, Lambda, and cloud architecture. Prepares for AWS certification.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-certificate" style="color:#6366f1;margin-right:4px;"></i>AWS Prep</span><button class="res-card-btn">Enroll</button></div>
+      </div>
+
+      <div class="res-card" data-cat="coding ai">
+        <div class="res-card-top">
+          <div class="res-card-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fas fa-database"></i></div>
+          <span class="res-tag" style="background:rgba(6,182,212,0.1);color:#06b6d4;border:1px solid rgba(6,182,212,0.25);">Coding</span>
+        </div>
+        <h3>Data Science with Python</h3>
+        <p>Pandas, NumPy, Matplotlib, and Seaborn for data analysis. Real datasets from Kaggle used throughout.</p>
+        <div class="res-card-footer"><span class="res-card-meta"><i class="fas fa-chart-line" style="color:#06b6d4;margin-right:4px;"></i>Kaggle Datasets</span><button class="res-card-btn">Enroll</button></div>
+      </div>
+
+    </div><!-- /exploreGrid -->
+
+    <div id="exploreEmpty" class="empty-state" style="display:none;">
+      <i class="fas fa-search"></i>
+      <p>No resources found. Try a different search or filter.</p>
+    </div>
+
+  </div>
+</div><!-- /page-explore -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: ABOUT
+═══════════════════════════════════════ -->
+<div id="page-about" class="page">
+  <div class="pt-hero pt-hero-teal">
+    <div class="pt-hero-inner">
+      <div class="pt-icon pt-icon-teal"><i class="fas fa-info-circle"></i></div>
+      <h1 class="pt-title">About the Portal</h1>
+      <p class="pt-desc">Learn about the CSE Innovation Portal, our vision, mission, department overview, and the technology-driven learning ecosystem at ACEW.</p>
+    </div>
+  </div>
+
+  <div class="portal-wrap">
+
+    <!-- About Portal -->
+    <div class="blk-title"><i class="fas fa-microchip"></i> About the CSE Innovation Portal</div>
+    <div class="info-card" style="margin-bottom:36px;">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+        <div class="info-card-icon" style="background:rgba(249,115,22,0.12);color:#f97316;margin-bottom:0;"><i class="fas fa-microchip"></i></div>
+        <div>
+          <h3 style="margin-bottom:2px;">Dept. of CSE – ACEW</h3>
+          <p style="font-size:0.72rem;color:#64748b;margin:0;">Established 2010 &nbsp;|&nbsp; AICTE Approved &nbsp;|&nbsp; Anna University Affiliated</p>
+        </div>
+      </div>
+      <p>The CSE Innovation Portal is a dedicated digital platform built to showcase, track, and celebrate the academic and technical achievements of students in the Department of Computer Science and Engineering at Arunachala College of Engineering for Women. It bridges the gap between student talent and public recognition, enabling faculty verification, transparent rankings, and a rich archive of innovations.</p>
+    </div>
+
+    <!-- Accreditations -->
+    <div class="accred-row">
+      <span class="accred-pill-p"><i class="fas fa-check-circle"></i> AICTE Approved</span>
+      <span class="accred-pill-p"><i class="fas fa-check-circle"></i> Anna University Affiliated</span>
+      <span class="accred-pill-p"><i class="fas fa-check-circle"></i> NBA Accredited</span>
+      <span class="accred-pill-p"><i class="fas fa-check-circle"></i> ISO 9001:2015 Certified</span>
+    </div>
+
+    <!-- Vision & Mission -->
+    <div class="blk-title"><i class="fas fa-eye"></i> Vision &amp; Mission</div>
+    <div class="vm-row">
+      <div class="vm-card vision">
+        <div class="vm-card-icon"><i class="fas fa-eye"></i></div>
+        <div class="vm-card-label">Vision</div>
+        <p>To be a centre of excellence in Computer Science and Engineering education, producing globally competent professionals who contribute to technological advancement and societal development.</p>
+      </div>
+      <div class="vm-card mission">
+        <div class="vm-card-icon"><i class="fas fa-bullseye"></i></div>
+        <div class="vm-card-label">Mission</div>
+        <ul>
+          <li>Provide quality education with strong theoretical and practical foundations.</li>
+          <li>Encourage research, innovation, and entrepreneurship among students.</li>
+          <li>Foster industry–academia collaboration for real-world exposure.</li>
+          <li>Develop ethical, socially responsible computing professionals.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Objectives -->
+    <div class="blk-title"><i class="fas fa-crosshairs"></i> Portal Objectives</div>
+    <div class="card-grid-3" style="margin-bottom:36px;">
+      <div class="info-card">
+        <div class="info-card-icon" style="background:rgba(249,115,22,0.12);color:#f97316;"><i class="fas fa-trophy"></i></div>
+        <h3>Recognize Excellence</h3>
+        <p>Provide a transparent, merit-based platform to recognize and celebrate student achievements across all categories.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;"><i class="fas fa-chart-line"></i></div>
+        <h3>Track Progress</h3>
+        <p>Enable students and faculty to track academic progress, innovation milestones, and research contributions over time.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fas fa-handshake"></i></div>
+        <h3>Industry Connect</h3>
+        <p>Showcase student talent to industry partners, enabling internship, placement, and collaboration opportunities.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon" style="background:rgba(16,185,129,0.12);color:#10b981;"><i class="fas fa-flask"></i></div>
+        <h3>Research Culture</h3>
+        <p>Foster a culture of research and innovation by making publications, patents, and projects publicly visible.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fas fa-users"></i></div>
+        <h3>Faculty Collaboration</h3>
+        <p>Strengthen faculty–student collaboration through verified achievement tracking and mentorship visibility.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon" style="background:rgba(99,102,241,0.12);color:#6366f1;"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Lifelong Learning</h3>
+        <p>Encourage continuous learning through certifications, workshops, and skill-based achievement recognition.</p>
+      </div>
+    </div>
+
+    <!-- Dept Stats -->
+    <div class="blk-title"><i class="fas fa-chart-bar"></i> Department at a Glance</div>
+    <div class="stat-row" style="grid-template-columns:repeat(3,1fr);">
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(249,115,22,0.12);color:#f97316;"><i class="fas fa-users"></i></div>
+        <div class="stat-num">240+</div><div class="stat-label">Students Enrolled</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="stat-num">18</div><div class="stat-label">Faculty Members</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fas fa-flask"></i></div>
+        <div class="stat-num">8</div><div class="stat-label">Laboratories</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(16,185,129,0.12);color:#10b981;"><i class="fas fa-trophy"></i></div>
+        <div class="stat-num">312+</div><div class="stat-label">Achievements</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fas fa-handshake"></i></div>
+        <div class="stat-num">25+</div><div class="stat-label">Industry Partners</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon" style="background:rgba(239,68,68,0.12);color:#ef4444;"><i class="fas fa-percentage"></i></div>
+        <div class="stat-num">92%</div><div class="stat-label">Placement Rate</div>
+      </div>
+    </div>
+
+    <!-- Programmes -->
+    <div class="blk-title"><i class="fas fa-graduation-cap"></i> Programmes Offered</div>
+    <div class="card-grid-3" style="margin-bottom:36px;">
+      <div class="info-card">
+        <span style="display:inline-block;background:rgba(249,115,22,0.12);color:#f97316;border:1px solid rgba(249,115,22,0.3);font-size:0.68rem;font-weight:800;padding:3px 12px;border-radius:999px;margin-bottom:12px;">UG</span>
+        <h3>B.E. Computer Science and Engineering</h3>
+        <p>4 Years &nbsp;|&nbsp; 60 Seats per batch</p>
+      </div>
+      <div class="info-card">
+        <span style="display:inline-block;background:rgba(139,92,246,0.12);color:#8b5cf6;border:1px solid rgba(139,92,246,0.3);font-size:0.68rem;font-weight:800;padding:3px 12px;border-radius:999px;margin-bottom:12px;">PG</span>
+        <h3>M.E. Computer Science and Engineering</h3>
+        <p>2 Years &nbsp;|&nbsp; 18 Seats per batch</p>
+      </div>
+      <div class="info-card">
+        <span style="display:inline-block;background:rgba(6,182,212,0.12);color:#06b6d4;border:1px solid rgba(6,182,212,0.3);font-size:0.68rem;font-weight:800;padding:3px 12px;border-radius:999px;margin-bottom:12px;">Ph.D</span>
+        <h3>Doctor of Philosophy – CSE</h3>
+        <p>Full-time &amp; Part-time</p>
+      </div>
+    </div>
+
+    <!-- Faculty -->
+    <div class="blk-title"><i class="fas fa-user-tie"></i> Faculty &amp; Staff</div>
+    <div class="fac-grid">
+      <div class="fac-card">
+        <div class="fac-avatar" style="background:linear-gradient(135deg,#f97316,#ea580c);">M</div>
+        <div><div class="fac-name">Dr. Meenakshi R</div><div class="fac-role">Head of Department</div><div class="fac-qual">Ph.D – Computer Science</div></div>
+        <span class="fac-badge hod">HoD</span>
+      </div>
+      <div class="fac-card">
+        <div class="fac-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);">S</div>
+        <div><div class="fac-name">Prof. Suresh K</div><div class="fac-role">Associate Professor</div><div class="fac-qual">M.E. – Software Engineering</div></div>
+        <span class="fac-badge staff">Staff</span>
+      </div>
+      <div class="fac-card">
+        <div class="fac-avatar" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">P</div>
+        <div><div class="fac-name">Dr. Priya S</div><div class="fac-role">Assistant Professor</div><div class="fac-qual">Ph.D – Artificial Intelligence</div></div>
+        <span class="fac-badge staff">Staff</span>
+      </div>
+      <div class="fac-card">
+        <div class="fac-avatar" style="background:linear-gradient(135deg,#10b981,#059669);">R</div>
+        <div><div class="fac-name">Prof. Ramya V</div><div class="fac-role">Assistant Professor</div><div class="fac-qual">M.E. – Network Engineering</div></div>
+        <span class="fac-badge staff">Staff</span>
+      </div>
+    </div>
+
+    <!-- PEO & PSO -->
+    <div class="blk-title"><i class="fas fa-star"></i> PEOs &amp; PSOs</div>
+    <div class="peo-grid">
+      <div class="peo-card">
+        <div class="blk-title" style="font-size:0.72rem;margin-bottom:0;border:none;padding:0;"><i class="fas fa-bullseye"></i> Program Educational Objectives</div>
+        <ul>
+          <li><span class="peo-num">PEO 1</span> Graduates will apply CS fundamentals to solve complex engineering problems.</li>
+          <li><span class="peo-num">PEO 2</span> Graduates will demonstrate professional skills and ethical responsibility.</li>
+          <li><span class="peo-num">PEO 3</span> Graduates will engage in lifelong learning and research.</li>
+          <li><span class="peo-num">PEO 4</span> Graduates will contribute to entrepreneurship and innovation.</li>
+        </ul>
+      </div>
+      <div class="peo-card">
+        <div class="blk-title" style="font-size:0.72rem;margin-bottom:0;border:none;padding:0;"><i class="fas fa-code"></i> Program Specific Outcomes</div>
+        <ul>
+          <li><span class="peo-num">PSO 1</span> Design and develop software solutions using modern programming paradigms.</li>
+          <li><span class="peo-num">PSO 2</span> Apply AI, ML, and data science techniques to real-world problems.</li>
+          <li><span class="peo-num">PSO 3</span> Build secure, scalable, and efficient networked systems.</li>
+          <li><span class="peo-num">PSO 4</span> Demonstrate project management and teamwork in software development.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /page-about -->
+
+<!-- ═══════════════════════════════════════
+     PAGE: CONTACT
+═══════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="pt-hero pt-hero-green">
+    <div class="pt-hero-inner">
+      <div class="pt-icon pt-icon-green"><i class="fas fa-envelope"></i></div>
+      <h1 class="pt-title">Contact Us</h1>
+      <p class="pt-desc">Reach out to the CSE Department at Arunachala College of Engineering for Women. We're here to help.</p>
+    </div>
+  </div>
+
+  <div class="portal-wrap">
+
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info-col">
+        <div class="blk-title"><i class="fas fa-address-book"></i> Contact Details</div>
+
+        <div class="contact-info-card">
+          <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="ci-label">Address</div>
+            <div class="ci-val">Arunachala College of Engineering for Women,<br/>Vellichanthai, Manavilai,<br/>Kanyakumari – 629 203, Tamil Nadu, India</div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="ci-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="ci-label">Phone</div>
+            <div class="ci-val"><a href="tel:+914651250000">+91 04651 – 250 XXX</a></div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val"><a href="mailto:cse@acew.edu.in">cse@acew.edu.in</a></div>
+          </div>
+        </div>
+
+        <div class="contact-info-card">
+          <div class="ci-icon"><i class="fas fa-globe"></i></div>
+          <div>
+            <div class="ci-label">Website</div>
+            <div class="ci-val"><a href="https://www.acew.edu.in" target="_blank">www.acew.edu.in</a></div>
+          </div>
+        </div>
+
+        <!-- Office Hours -->
+        <div class="blk-title" style="margin-top:8px;"><i class="fas fa-clock"></i> Office Hours</div>
+        <div class="hours-card">
+          <div class="hours-row"><span class="hours-day">Monday – Friday</span><span class="hours-time">8:00 AM – 5:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">9:00 AM – 1:00 PM</span></div>
+          <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-closed">Closed</span></div>
+          <div class="hours-row"><span class="hours-day">Public Holidays</span><span class="hours-closed">Closed</span></div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div>
+        <div class="blk-title"><i class="fas fa-paper-plane"></i> Send a Message</div>
+        <div class="contact-form-card">
+          <div class="cf-title"><i class="fas fa-comment-dots"></i> Get in Touch</div>
+          <div class="cf-row">
+            <div class="cf-group">
+              <label class="cf-label">Full Name *</label>
+              <input type="text" class="cf-input" id="cfName" placeholder="Your full name"/>
+              <span class="cf-error-msg" id="cfNameErr">Please enter your name.</span>
+            </div>
+            <div class="cf-group">
+              <label class="cf-label">Email Address *</label>
+              <input type="email" class="cf-input" id="cfEmail" placeholder="your@email.com"/>
+              <span class="cf-error-msg" id="cfEmailErr">Please enter a valid email.</span>
+            </div>
+          </div>
+          <div class="cf-group">
+            <label class="cf-label">Subject *</label>
+            <input type="text" class="cf-input" id="cfSubject" placeholder="What is this about?"/>
+            <span class="cf-error-msg" id="cfSubjectErr">Please enter a subject.</span>
+          </div>
+          <div class="cf-group">
+            <label class="cf-label">Message *</label>
+            <textarea class="cf-textarea" id="cfMessage" placeholder="Write your message here..."></textarea>
+            <span class="cf-error-msg" id="cfMessageErr">Please enter your message.</span>
+          </div>
+          <button class="cf-submit" onclick="submitContactForm()"><i class="fas fa-paper-plane"></i> Send Message</button>
+          <div class="cf-success" id="cfSuccess">
+            <i class="fas fa-check-circle" style="font-size:1.2rem;"></i>
+            <span>Message sent successfully! We'll get back to you within 24 hours.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map Placeholder -->
+    <div class="blk-title"><i class="fas fa-map"></i> Location</div>
+    <div class="map-placeholder">
+      <i class="fas fa-map-marker-alt"></i>
+      <p>Arunachala College of Engineering for Women</p>
+      <p style="font-size:0.75rem;color:#475569;">Vellichanthai, Manavilai, Kanyakumari – 629 203</p>
+      <a href="https://maps.google.com/?q=Arunachala+College+of+Engineering+for+Women+Kanyakumari" target="_blank"><i class="fas fa-external-link-alt"></i> Open in Google Maps</a>
+    </div>
+
+  </div>
+</div><!-- /page-contact -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 CSE Department Showcase &amp; Innovation Portal | Arunachala College of Engineering for Women</span>
+    <span class="footer-tag">INNOVATE • RESEARCH • ACHIEVE</span>
+  </div>
+</footer>
+
+<!-- ═══ AI ASSISTANT PANEL ═══ -->
+<div class="ai-overlay" id="aiOverlay" onclick="closeAIAssistant()"></div>
+<div class="ai-panel" id="aiPanel">
+  <div class="ai-panel-header">
+    <div class="ai-header-left">
+      <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+      <div><div class="ai-title">AI Innovation Assistant</div><div class="ai-status"><span class="ai-dot"></span>Online</div></div>
+    </div>
+    <button class="ai-close" onclick="closeAIAssistant()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="ai-suggestions" id="aiSuggestions">
+    <button onclick="aiQuery('Find AI projects')">AI projects</button>
+    <button onclick="aiQuery('Show Python projects')">Python</button>
+    <button onclick="aiQuery('Find IoT projects')">IoT</button>
+    <button onclick="aiQuery('Show cybersecurity projects')">Cybersecurity</button>
+    <button onclick="aiQuery('Find final year projects')">Final year</button>
+    <button onclick="aiQuery('Show hackathon winners')">Hackathons</button>
+  </div>
+  <div class="ai-messages" id="aiMessages"></div>
+  <div class="ai-input-bar">
+    <input type="text" id="aiInput" placeholder="Ask about any project..." onkeydown="if(event.key==='Enter')sendAIMessage()"/>
+    <button class="ai-send" onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<!-- ═══ SCRIPTS ═══ -->
+<script src="js/data.js"></script>
+<script src="js/home.js"></script>
+<script src="js/ai-assistant.js"></script>
+<script>
+// ── PAGE NAVIGATION ──────────────────────────────────
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
+  var target = document.getElementById('page-' + id);
+  if (target) {
+    target.style.display = 'block';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() { target.classList.add('active'); });
+    });
+  }
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.classList.toggle('active', a.dataset.page === id);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Close mobile nav
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+document.querySelectorAll('.nav-links a[data-page]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    showPage(a.dataset.page);
+  });
+});
+
+// Init first page display
+document.querySelectorAll('.page').forEach(function(p) {
+  if (!p.classList.contains('active')) p.style.display = 'none';
+});
+
+// ── HERO SEARCH ──────────────────────────────────────
+function handleHeroSearch() {
+  var q = document.getElementById('heroSearch');
+  var val = q ? q.value.trim() : '';
+  if (val) window.location.href = 'achievements.html?q=' + encodeURIComponent(val);
+  else showPage('explore');
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var inp = document.getElementById('heroSearch');
+  if (inp) inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') handleHeroSearch(); });
+  document.querySelectorAll('.hf-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.hf-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      var f = btn.dataset.filter;
+      if (f && f !== 'all') window.location.href = 'achievements.html?cat=' + f;
+    });
+  });
+});
+
+// ── EXPLORE FILTER ───────────────────────────────────
+function filterExplore() {
+  var q   = (document.getElementById('exploreSearch').value || '').toLowerCase();
+  var cat = document.querySelector('.efp.active') ? document.querySelector('.efp.active').dataset.cat : 'all';
+  var cards = document.querySelectorAll('#exploreGrid .res-card');
+  var visible = 0;
+  cards.forEach(function(card) {
+    var cats = (card.dataset.cat || '').split(' ');
+    var matchCat = cat === 'all' || cats.includes(cat);
+    var text = card.textContent.toLowerCase();
+    var matchQ = !q || text.includes(q);
+    var show = matchCat && matchQ;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('exploreEmpty').style.display = visible === 0 ? 'block' : 'none';
+}
+
+document.querySelectorAll('.efp').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.efp').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    filterExplore();
+  });
+});
+
+// ── CONTACT FORM ─────────────────────────────────────
+function submitContactForm() {
+  var valid = true;
+  function validate(id, errId, check) {
+    var el = document.getElementById(id);
+    var err = document.getElementById(errId);
+    var ok = check(el.value.trim());
+    el.classList.toggle('error', !ok);
+    err.classList.toggle('show', !ok);
+    if (!ok) valid = false;
+  }
+  validate('cfName',    'cfNameErr',    function(v){ return v.length >= 2; });
+  validate('cfEmail',   'cfEmailErr',   function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); });
+  validate('cfSubject', 'cfSubjectErr', function(v){ return v.length >= 3; });
+  validate('cfMessage', 'cfMessageErr', function(v){ return v.length >= 10; });
+  if (!valid) return;
+  // Simulate submit
+  document.getElementById('cfSuccess').classList.add('show');
+  ['cfName','cfEmail','cfSubject','cfMessage'].forEach(function(id){ document.getElementById(id).value = ''; });
+  setTimeout(function(){ document.getElementById('cfSuccess').classList.remove('show'); }, 5000);
+}
+</script>
+</body>
+</html>

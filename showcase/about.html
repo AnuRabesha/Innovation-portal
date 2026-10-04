@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dept. of CSE – Arunachala College of Engineering for Women</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/dept.css?v=2" />
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="dept-nav">
+  <div class="dn-brand">
+    <div class="dn-logo">A</div>
+    <div class="dn-brand-text">
+      <span class="dn-title">Arunachala College of Engineering for Women</span>
+      <span class="dn-sub">Department of Computer Science and Engineering</span>
+    </div>
+  </div>
+
+  <ul class="dn-links" id="dnLinks">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#academics">Academics</a></li>
+    <li><a href="#departments">Departments</a></li>
+    <li><a href="#students">Students</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <div class="dn-right">
+    <button class="dn-icon-btn" title="Search"><i class="fas fa-search"></i></button>
+    <button class="dn-icon-btn dn-hamburger-btn" onclick="toggleDeptNav()" title="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="dept-hero">
+
+  <!-- Background -->
+  <div class="dh-bg">
+    <div class="dh-bg-gradient"></div>
+
+    <!-- SVG Circuit board pattern -->
+    <svg class="dh-circuit" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="glow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Horizontal lines -->
+      <line x1="0" y1="180" x2="400" y2="180" stroke="#00d4ff" stroke-width="0.8" opacity="0.4"/>
+      <line x1="0" y1="360" x2="300" y2="360" stroke="#00d4ff" stroke-width="0.8" opacity="0.3"/>
+      <line x1="0" y1="540" x2="350" y2="540" stroke="#00d4ff" stroke-width="0.8" opacity="0.35"/>
+      <line x1="0" y1="720" x2="250" y2="720" stroke="#00d4ff" stroke-width="0.8" opacity="0.25"/>
+      <!-- Vertical lines -->
+      <line x1="120" y1="0" x2="120" y2="900" stroke="#00d4ff" stroke-width="0.8" opacity="0.2"/>
+      <line x1="280" y1="0" x2="280" y2="900" stroke="#00d4ff" stroke-width="0.8" opacity="0.15"/>
+      <!-- Nodes -->
+      <circle cx="120" cy="180" r="4" fill="none" stroke="#00d4ff" stroke-width="1.2" opacity="0.6" filter="url(#glow)"/>
+      <circle cx="120" cy="180" r="2" fill="#00d4ff" opacity="0.8"/>
+      <circle cx="280" cy="360" r="4" fill="none" stroke="#00d4ff" stroke-width="1.2" opacity="0.5"/>
+      <circle cx="280" cy="360" r="2" fill="#00d4ff" opacity="0.7"/>
+      <circle cx="120" cy="540" r="4" fill="none" stroke="#00d4ff" stroke-width="1.2" opacity="0.5"/>
+      <circle cx="120" cy="540" r="2" fill="#00d4ff" opacity="0.7"/>
+      <circle cx="280" cy="720" r="4" fill="none" stroke="#00d4ff" stroke-width="1.2" opacity="0.4"/>
+      <circle cx="280" cy="720" r="2" fill="#00d4ff" opacity="0.6"/>
+      <!-- L-bends -->
+      <polyline points="400,180 440,180 440,360 300,360" fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0.3"/>
+      <polyline points="350,540 390,540 390,720 250,720" fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0.25"/>
+      <!-- Right side circuits -->
+      <line x1="1100" y1="0" x2="1100" y2="900" stroke="#00d4ff" stroke-width="0.8" opacity="0.15"/>
+      <line x1="1300" y1="0" x2="1300" y2="900" stroke="#00d4ff" stroke-width="0.8" opacity="0.12"/>
+      <line x1="900" y1="200" x2="1440" y2="200" stroke="#00d4ff" stroke-width="0.8" opacity="0.2"/>
+      <line x1="950" y1="450" x2="1440" y2="450" stroke="#00d4ff" stroke-width="0.8" opacity="0.18"/>
+      <line x1="920" y1="700" x2="1440" y2="700" stroke="#00d4ff" stroke-width="0.8" opacity="0.15"/>
+      <circle cx="1100" cy="200" r="4" fill="none" stroke="#00d4ff" stroke-width="1.2" opacity="0.5"/>
+      <circle cx="1100" cy="200" r="2" fill="#00d4ff" opacity="0.7"/>
+      <circle cx="1300" cy="450" r="4" fill="none" stroke="#00d4ff" stroke-width="1.2" opacity="0.45"/>
+      <circle cx="1300" cy="450" r="2" fill="#00d4ff" opacity="0.65"/>
+      <circle cx="1100" cy="700" r="4" fill="none" stroke="#00d4ff" stroke-width="1.2" opacity="0.4"/>
+      <circle cx="1100" cy="700" r="2" fill="#00d4ff" opacity="0.6"/>
+      <!-- IC chip shapes -->
+      <rect x="60" y="400" width="40" height="30" rx="3" fill="none" stroke="#00d4ff" stroke-width="0.8" opacity="0.3"/>
+      <line x1="60" y1="408" x2="50" y2="408" stroke="#00d4ff" stroke-width="0.8" opacity="0.3"/>
+      <line x1="60" y1="416" x2="50" y2="416" stroke="#00d4ff" stroke-width="0.8" opacity="0.3"/>
+      <line x1="60" y1="424" x2="50" y2="424" stroke="#00d4ff" stroke-width="0.8" opacity="0.3"/>
+      <line x1="100" y1="408" x2="110" y2="408" stroke="#00d4ff" stroke-width="0.8" opacity="0.3"/>
+      <line x1="100" y1="416" x2="110" y2="416" stroke="#00d4ff" stroke-width="0.8" opacity="0.3"/>
+      <line x1="100" y1="424" x2="110" y2="424" stroke="#00d4ff" stroke-width="0.8" opacity="0.3"/>
+      <!-- Gold accent lines -->
+      <line x1="200" y1="0" x2="200" y2="200" stroke="#f5c842" stroke-width="0.6" opacity="0.2"/>
+      <circle cx="200" cy="200" r="3" fill="#f5c842" opacity="0.4"/>
+    </svg>
+
+    <div class="dh-glow-left"></div>
+    <div class="dh-glow-right"></div>
+    <div class="dh-glow-gold"></div>
+  </div>
+
+  <!-- Floating particles -->
+  <div class="dh-particles" id="dhParticles"></div>
+
+  <!-- Content -->
+  <div class="dh-inner">
+
+    <!-- LEFT -->
+    <div class="dh-left">
+      <div class="dh-eyebrow">
+        <span class="dh-eyebrow-text">LEARN &nbsp;•&nbsp; BUILD &nbsp;•&nbsp; INNOVATE</span>
+        <div class="dh-eyebrow-line"></div>
+      </div>
+
+      <h1 class="dh-heading">
+        <span class="dh-heading-white">Department</span>
+        <span class="dh-heading-cyan">Overview</span>
+      </h1>
+
+      <div class="dh-underline"></div>
+      <p class="dh-dept-label">Computer Science and Engineering</p>
+
+      <p class="dh-desc">
+        A centre of excellence shaping the next generation of technology leaders.
+        Combining rigorous academics, cutting-edge research, and industry-aligned
+        curriculum to build globally competent engineers.
+      </p>
+
+      <div class="dh-btns">
+        <a href="index.html" class="dh-btn-primary">
+          <i class="fas fa-rocket"></i> Explore Portal
+        </a>
+        <a href="achievements.html" class="dh-btn-outline">
+          <i class="fas fa-trophy"></i> Achievements
+        </a>
+      </div>
+    </div>
+
+    <!-- RIGHT — code screen visual -->
+    <div class="dh-right">
+      <div class="dh-visual">
+
+        <!-- Floating badge top-right -->
+        <div class="dh-badge dh-badge-1">
+          <div class="dh-badge-icon">🏆</div>
+          <div class="dh-badge-text">
+            <span class="dh-badge-val">312+</span>
+            <span class="dh-badge-lbl">Achievements</span>
+          </div>
+        </div>
+
+        <!-- Screen -->
+        <div class="dh-screen">
+          <div class="dh-screen-bar">
+            <div class="dh-dot"></div>
+            <div class="dh-dot"></div>
+            <div class="dh-dot"></div>
+            <span class="dh-screen-title">cse_portal.py</span>
+          </div>
+          <div class="dh-code">
+            <div class="dh-code-line"><span class="dh-ln">1</span><span class="dh-cm"># CSE Achievement Portal</span></div>
+            <div class="dh-code-line"><span class="dh-ln">2</span><span class="dh-kw">class</span>&nbsp;<span class="dh-fn">Department</span>:</div>
+            <div class="dh-code-line"><span class="dh-ln">3</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="dh-kw">def</span>&nbsp;<span class="dh-fn">__init__</span>(self):</div>
+            <div class="dh-code-line"><span class="dh-ln">4</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.name&nbsp;=&nbsp;<span class="dh-str">"CSE"</span></div>
+            <div class="dh-code-line"><span class="dh-ln">5</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.students&nbsp;=&nbsp;<span class="dh-op">240</span></div>
+            <div class="dh-code-line"><span class="dh-ln">6</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.achievements&nbsp;=&nbsp;<span class="dh-op">312</span></div>
+            <div class="dh-code-line"><span class="dh-ln">7</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.vision&nbsp;=&nbsp;<span class="dh-str">"Excellence"</span></div>
+            <div class="dh-code-line"><span class="dh-ln">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="dh-kw">def</span>&nbsp;<span class="dh-fn">innovate</span>(self):</div>
+            <div class="dh-code-line"><span class="dh-ln">9</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="dh-kw">return</span>&nbsp;<span class="dh-str">"Build the Future"</span></div>
+            <div class="dh-code-line"><span class="dh-ln">10</span><span class="dh-fn">dept</span>&nbsp;<span class="dh-op">=</span>&nbsp;<span class="dh-fn">Department</span>()<span class="dh-cursor"></span></div>
+          </div>
+        </div>
+
+        <!-- Floating badge bottom-left -->
+        <div class="dh-badge dh-badge-2">
+          <div class="dh-badge-icon">⭐</div>
+          <div class="dh-badge-text">
+            <span class="dh-badge-val">NBA Accredited</span>
+            <span class="dh-badge-lbl">AICTE Approved</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CARDS SECTION ══ -->
+<section id="about">
+<div class="dept-cards">
+
+  <div class="dc-header">
+    <div class="dc-tag"><div class="dc-tag-dot"></div>Department Information</div>
+    <h2 class="dc-title">Who <span>We Are</span></h2>
+    <p class="dc-sub">Click any card to explore details about our department, vision, and mission</p>
+  </div>
+
+  <div class="dc-grid">
+
+    <!-- CARD 1: Dept of CSE -->
+    <div class="dc-card" onclick="openModal('cse')" role="button" tabindex="0">
+      <div class="dc-corner dc-corner-tl"></div>
+      <div class="dc-corner dc-corner-br"></div>
+      <div class="dc-icon-wrap"><div class="dc-icon-inner"><i class="fas fa-code"></i></div></div>
+      <h3 class="dc-card-title">Dept. of CSE</h3>
+      <p class="dc-card-desc">Explore our department's introduction, objectives, faculty, facilities, and achievements.</p>
+      <div class="dc-click-hint"><i class="fas fa-hand-pointer"></i> Click to explore</div>
+      <div class="dc-glow-dot"></div>
+    </div>
+
+    <!-- CARD 2: VISION -->
+    <div class="dc-card gold-card" onclick="openModal('vision')" role="button" tabindex="0">
+      <div class="dc-corner dc-corner-tl"></div>
+      <div class="dc-corner dc-corner-br"></div>
+      <div class="dc-icon-wrap"><div class="dc-icon-inner"><i class="fas fa-eye"></i></div></div>
+      <h3 class="dc-card-title">Vision</h3>
+      <p class="dc-card-desc">Our guiding vision for excellence in Computer Science and Engineering education.</p>
+      <div class="dc-click-hint gold-hint"><i class="fas fa-hand-pointer"></i> Click to explore</div>
+      <div class="dc-glow-dot"></div>
+    </div>
+
+    <!-- CARD 3: MISSION -->
+    <div class="dc-card" onclick="openModal('mission')" role="button" tabindex="0">
+      <div class="dc-corner dc-corner-tl"></div>
+      <div class="dc-corner dc-corner-br"></div>
+      <div class="dc-icon-wrap"><div class="dc-icon-inner"><i class="fas fa-bullseye"></i></div></div>
+      <h3 class="dc-card-title">Mission</h3>
+      <p class="dc-card-desc">Our mission pillars that drive quality education, research, and industry collaboration.</p>
+      <div class="dc-click-hint"><i class="fas fa-hand-pointer"></i> Click to explore</div>
+      <div class="dc-glow-dot"></div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- ══ OVERLAY ══ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+
+<!-- ══ MODAL: CSE DEPT ══ -->
+<div class="info-modal" id="modal-cse">
+  <div class="im-header">
+    <div class="im-header-left">
+      <div class="im-icon cyan-im"><i class="fas fa-code"></i></div>
+      <div>
+        <div class="im-title">Department of CSE</div>
+        <div class="im-sub">Arunachala College of Engineering for Women</div>
+      </div>
+    </div>
+    <button class="im-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="im-body">
+
+    <div class="im-section">
+      <div class="im-section-title"><i class="fas fa-info-circle"></i> Introduction</div>
+      <p class="im-text">The Department of Computer Science and Engineering at Arunachala College of Engineering for Women was established in 2010 and is approved by AICTE and affiliated to Anna University. The department is committed to producing technically competent, ethically grounded, and innovation-driven engineers who are ready to meet global industry demands.</p>
+    </div>
+
+    <div class="im-section">
+      <div class="im-section-title"><i class="fas fa-bullseye"></i> Objectives</div>
+      <ul class="im-list">
+        <li>Provide strong theoretical and practical foundations in Computer Science.</li>
+        <li>Develop problem-solving and analytical thinking skills in students.</li>
+        <li>Encourage research, innovation, and entrepreneurship.</li>
+        <li>Foster industry–academia collaboration for real-world exposure.</li>
+        <li>Develop ethical, socially responsible computing professionals.</li>
+      </ul>
+    </div>
+
+    <div class="im-section">
+      <div class="im-section-title"><i class="fas fa-graduation-cap"></i> Academic Programmes</div>
+      <div class="im-prog-grid">
+        <div class="im-prog"><span class="im-badge cyan-badge">UG</span><div><div class="im-prog-name">B.E. Computer Science and Engineering</div><div class="im-prog-meta">4 Years · 60 Seats per batch</div></div></div>
+        <div class="im-prog"><span class="im-badge purple-badge">PG</span><div><div class="im-prog-name">M.E. Computer Science and Engineering</div><div class="im-prog-meta">2 Years · 18 Seats per batch</div></div></div>
+        <div class="im-prog"><span class="im-badge gold-badge">Ph.D</span><div><div class="im-prog-name">Doctor of Philosophy – CSE</div><div class="im-prog-meta">Full-time &amp; Part-time</div></div></div>
+      </div>
+    </div>
+
+    <div class="im-section">
+      <div class="im-section-title"><i class="fas fa-user-tie"></i> Faculty</div>
+      <div class="im-faculty-grid">
+        <div class="im-faculty"><div class="im-fav" style="background:linear-gradient(135deg,#f97316,#ea580c)">M</div><div><div class="im-fname">Dr. Meenakshi R</div><div class="im-frole">Head of Department · Ph.D – CS</div></div></div>
+        <div class="im-faculty"><div class="im-fav" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)">S</div><div><div class="im-fname">Prof. Suresh K</div><div class="im-frole">Associate Professor · M.E. – SE</div></div></div>
+        <div class="im-faculty"><div class="im-fav" style="background:linear-gradient(135deg,#06b6d4,#0891b2)">P</div><div><div class="im-fname">Dr. Priya S</div><div class="im-frole">Assistant Professor · Ph.D – AI</div></div></div>
+        <div class="im-faculty"><div class="im-fav" style="background:linear-gradient(135deg,#10b981,#059669)">R</div><div><div class="im-fname">Prof. Ramya V</div><div class="im-frole">Assistant Professor · M.E. – Networks</div></div></div>
+      </div>
+    </div>
+
+    <div class="im-section">
+      <div class="im-section-title"><i class="fas fa-laptop-code"></i> Facilities</div>
+      <div class="im-tags">
+        <span class="im-tag">💻 Programming Lab – 60 Systems</span>
+        <span class="im-tag">🌐 Networking Lab – 40 Systems</span>
+        <span class="im-tag">🧠 AI &amp; ML Lab – GPU Workstations</span>
+        <span class="im-tag">🛡️ Cyber Security Lab</span>
+        <span class="im-tag">📡 IoT Lab – Arduino / Raspberry Pi</span>
+        <span class="im-tag">🔬 Project Lab – 24/7 Access</span>
+        <span class="im-tag">📚 Digital Library – 10,000+ e-Books</span>
+        <span class="im-tag">🖥️ Smart Classrooms</span>
+      </div>
+    </div>
+
+    <div class="im-section">
+      <div class="im-section-title"><i class="fas fa-trophy"></i> Achievements &amp; Highlights</div>
+      <div class="im-stats-row">
+        <div class="im-stat"><div class="im-stat-num">240+</div><div class="im-stat-lbl">Students</div></div>
+        <div class="im-stat"><div class="im-stat-num">18</div><div class="im-stat-lbl">Faculty</div></div>
+        <div class="im-stat"><div class="im-stat-num">312+</div><div class="im-stat-lbl">Achievements</div></div>
+        <div class="im-stat"><div class="im-stat-num">92%</div><div class="im-stat-lbl">Placement</div></div>
+        <div class="im-stat"><div class="im-stat-num">25+</div><div class="im-stat-lbl">Industry Partners</div></div>
+        <div class="im-stat"><div class="im-stat-num">8</div><div class="im-stat-lbl">Labs</div></div>
+      </div>
+    </div>
+
+    <div class="im-section">
+      <div class="im-section-title"><i class="fas fa-check-circle"></i> Accreditations</div>
+      <div class="im-tags">
+        <span class="im-tag cyan-tag">✅ AICTE Approved</span>
+        <span class="im-tag cyan-tag">✅ Anna University Affiliated</span>
+        <span class="im-tag cyan-tag">✅ NBA Accredited</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ MODAL: VISION ══ -->
+<div class="info-modal" id="modal-vision">
+  <div class="im-header gold-header">
+    <div class="im-header-left">
+      <div class="im-icon gold-im"><i class="fas fa-eye"></i></div>
+      <div>
+        <div class="im-title">Vision</div>
+        <div class="im-sub">Department of Computer Science and Engineering</div>
+      </div>
+    </div>
+    <button class="im-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="im-body">
+
+    <div class="im-vision-banner">
+      <div class="im-vision-quote">"</div>
+      <p class="im-vision-text">To be a centre of excellence in Computer Science and Engineering education, producing globally competent professionals who contribute to technological advancement and societal development.</p>
+    </div>
+
+    <div class="im-section">
+      <div class="im-section-title gold-title"><i class="fas fa-star"></i> What Our Vision Means</div>
+      <ul class="im-list">
+        <li><strong>Centre of Excellence</strong> — Maintaining the highest academic and research standards in CSE education.</li>
+        <li><strong>Global Competence</strong> — Preparing students to compete and contribute at an international level.</li>
+        <li><strong>Technological Advancement</strong> — Driving innovation through cutting-edge research and development.</li>
+        <li><strong>Societal Development</strong> — Using technology to solve real-world problems and improve lives.</li>
+      </ul>
+    </div>
+
+    <div class="im-section">
+      <div class="im-section-title gold-title"><i class="fas fa-road"></i> Our Path Forward</div>
+      <p class="im-text">We envision a department where every student graduates not just with technical knowledge, but with the creativity, ethics, and leadership skills to make a meaningful impact. Through continuous curriculum innovation, industry partnerships, and research initiatives, we strive to remain at the forefront of computing education.</p>
+    </div>
+
+    <div class="im-section">
+      <div class="im-section-title gold-title"><i class="fas fa-layer-group"></i> Vision Pillars</div>
+      <div class="im-pillars">
+        <div class="im-pillar gold-pillar"><div class="im-pillar-icon">🎓</div><div class="im-pillar-label">Academic Excellence</div></div>
+        <div class="im-pillar gold-pillar"><div class="im-pillar-icon">🔬</div><div class="im-pillar-label">Research &amp; Innovation</div></div>
+        <div class="im-pillar gold-pillar"><div class="im-pillar-icon">🌐</div><div class="im-pillar-label">Global Reach</div></div>
+        <div class="im-pillar gold-pillar"><div class="im-pillar-icon">🤝</div><div class="im-pillar-label">Industry Connect</div></div>
+        <div class="im-pillar gold-pillar"><div class="im-pillar-icon">💡</div><div class="im-pillar-label">Entrepreneurship</div></div>
+        <div class="im-pillar gold-pillar"><div class="im-pillar-icon">🌱</div><div class="im-pillar-label">Social Impact</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ MODAL: MISSION ══ -->
+<div class="info-modal" id="modal-mission">
+  <div class="im-header">
+    <div class="im-header-left">
+      <div class="im-icon cyan-im"><i class="fas fa-bullseye"></i></div>
+      <div>
+        <div class="im-title">Mission</div>
+        <div class="im-sub">Department of Computer Science and Engineering</div>
+      </div>
+    </div>
+    <button class="im-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="im-body">
+
+    <div class="im-section">
+      <div class="im-section-title"><i class="fas fa-list-check"></i> Our Mission Statements</div>
+      <div class="im-mission-list">
+        <div class="im-mission-item">
+          <div class="im-mission-num">M1</div>
+          <div>
+            <div class="im-mission-title">Quality Education</div>
+            <div class="im-mission-desc">Provide quality education with strong theoretical and practical foundations that prepare students for real-world challenges in computing and technology.</div>
+          </div>
+        </div>
+        <div class="im-mission-item">
+          <div class="im-mission-num">M2</div>
+          <div>
+            <div class="im-mission-title">Research &amp; Innovation</div>
+            <div class="im-mission-desc">Encourage research, innovation, and entrepreneurship among students and faculty through dedicated labs, funding, and mentorship programs.</div>
+          </div>
+        </div>
+        <div class="im-mission-item">
+          <div class="im-mission-num">M3</div>
+          <div>
+            <div class="im-mission-title">Industry–Academia Collaboration</div>
+            <div class="im-mission-desc">Foster strong partnerships with industry leaders to provide students with internships, live projects, and exposure to current technologies and practices.</div>
+          </div>
+        </div>
+        <div class="im-mission-item">
+          <div class="im-mission-num">M4</div>
+          <div>
+            <div class="im-mission-title">Ethical Professionals</div>
+            <div class="im-mission-desc">Develop ethical, socially responsible computing professionals who understand the impact of technology on society and act with integrity.</div>
+          </div>
+        </div>
+        <div class="im-mission-item">
+          <div class="im-mission-num">M5</div>
+          <div>
+            <div class="im-mission-title">Lifelong Learning</div>
+            <div class="im-mission-desc">Instil a culture of continuous learning and adaptability so graduates remain relevant in the ever-evolving field of computer science.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="im-section">
+      <div class="im-section-title"><i class="fas fa-chart-line"></i> Mission Outcomes</div>
+      <div class="im-pillars">
+        <div class="im-pillar"><div class="im-pillar-icon">📐</div><div class="im-pillar-label">Strong Fundamentals</div></div>
+        <div class="im-pillar"><div class="im-pillar-icon">🚀</div><div class="im-pillar-label">Innovation Culture</div></div>
+        <div class="im-pillar"><div class="im-pillar-icon">🏭</div><div class="im-pillar-label">Industry Ready</div></div>
+        <div class="im-pillar"><div class="im-pillar-icon">⚖️</div><div class="im-pillar-label">Ethics &amp; Values</div></div>
+        <div class="im-pillar"><div class="im-pillar-icon">📈</div><div class="im-pillar-label">Career Growth</div></div>
+        <div class="im-pillar"><div class="im-pillar-icon">🌍</div><div class="im-pillar-label">Global Mindset</div></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ HIGHLIGHTS SECTION ══ -->
+<section class="hl-section" id="highlights">
+  <div class="hl-inner">
+    <div class="hl-header">
+      <div class="dc-tag"><div class="dc-tag-dot"></div>College Highlights</div>
+      <h2 class="dc-title">Statistics &amp; <span>Numbers</span></h2>
+      <p class="dc-sub">Live data from our department records — click any card for full details</p>
+    </div>
+    <div class="hl-grid" id="hlGrid"></div>
+  </div>
+</section>
+
+<!-- ══ HIGHLIGHTS MODAL ══ -->
+<div class="info-modal" id="modal-hl">
+  <div class="im-header" id="hlModalHeader">
+    <div class="im-header-left">
+      <div class="im-icon cyan-im" id="hlModalIcon"><i class="fas fa-chart-bar"></i></div>
+      <div>
+        <div class="im-title" id="hlModalTitle">Details</div>
+        <div class="im-sub" id="hlModalSub">Department of CSE</div>
+      </div>
+    </div>
+    <button class="im-close" onclick="closeHlModal()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="im-body" id="hlModalBody"></div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="dept-footer">
+  <div class="dept-footer-inner">
+    <span class="dept-footer-copy">© 2025 Arunachala College of Engineering for Women – Dept. of CSE</span>
+    <span class="dept-footer-tag">LEARN • BUILD • INNOVATE</span>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script>
+// ── HIGHLIGHTS ──────────────────────────
+function buildHlGrid() {
+  var achs = DB.achievements.length;
+  var verified = DB.achievements.filter(function(a){ return a.verified; }).length;
+  var cards = [
+    { key:'students',  icon:'fas fa-users',         color:'#00d4ff', label:'Students',         num: HIGHLIGHTS.totalStudents, suffix:'+' },
+    { key:'faculty',   icon:'fas fa-chalkboard-teacher', color:'#a78bfa', label:'Faculty Members',  num: HIGHLIGHTS.totalFaculty,  suffix:''  },
+    { key:'labs',      icon:'fas fa-flask',          color:'#34d399', label:'Laboratories',     num: HIGHLIGHTS.totalLabs,     suffix:''  },
+    { key:'achieve',   icon:'fas fa-trophy',         color:'#f59e0b', label:'Achievements',     num: achs,                     suffix:'+' },
+    { key:'partners',  icon:'fas fa-handshake',      color:'#f97316', label:'Industry Partners', num: HIGHLIGHTS.totalPartners, suffix:'+' },
+  ];
+  var grid = document.getElementById('hlGrid');
+  grid.innerHTML = cards.map(function(c){
+    return '<div class="hl-card" onclick="openHlModal(\''+c.key+'\')" role="button" tabindex="0" style="--hc:'+c.color+'">' +
+      '<div class="hl-card-glow"></div>' +
+      '<div class="hl-card-icon"><i class="'+c.icon+'"></i></div>' +
+      '<div class="hl-card-num" data-target="'+c.num+'" data-suffix="'+c.suffix+'">0</div>' +
+      '<div class="hl-card-label">'+c.label+'</div>' +
+      '<div class="hl-card-hint"><i class="fas fa-hand-pointer"></i> Click for details</div>' +
+    '</div>';
+  }).join('');
+  // animate counters
+  grid.querySelectorAll('.hl-card-num').forEach(function(el){
+    var target = parseInt(el.dataset.target)||0;
+    var suffix = el.dataset.suffix||'';
+    if(!target){ el.textContent='0'+suffix; return; }
+    var start=0, dur=1400, step=target/(dur/16);
+    var t=setInterval(function(){
+      start+=step;
+      if(start>=target){ el.textContent=target.toLocaleString()+suffix; clearInterval(t); }
+      else el.textContent=Math.floor(start).toLocaleString()+suffix;
+    },16);
+  });
+  grid.querySelectorAll('.hl-card').forEach(function(card){
+    card.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); card.click(); } });
+  });
+}
+
+var _hlOverlay = null;
+function openHlModal(key){
+  // close any existing card modal
+  closeModal();
+  var modal = document.getElementById('modal-hl');
+  var overlay = document.getElementById('modalOverlay');
+  var title='', sub='Department of CSE', iconCls='fas fa-chart-bar', body='';
+  if(key==='students'){
+    title='Students'; iconCls='fas fa-users';
+    var rows = HIGHLIGHTS.studentBatches.map(function(b){
+      return '<div class="im-mission-item">'+
+        '<div class="im-mission-num" style="min-width:44px;font-size:0.65rem">'+b.batch+'</div>'+
+        '<div><div class="im-mission-title">'+b.year+'</div>'+
+        '<div class="im-mission-desc">Department: '+b.dept+' &nbsp;|&nbsp; Enrolled Students: <strong style="color:var(--cyan)">'+b.students+'</strong></div></div>'+
+      '</div>';
+    }).join('');
+    var total = HIGHLIGHTS.totalStudents;
+    body='<div class="im-section">'+
+      '<div class="im-section-title"><i class="fas fa-layer-group"></i> Batch-wise Breakdown</div>'+
+      '<div class="im-mission-list">'+rows+'</div></div>'+
+      '<div class="im-section">'+
+      '<div class="im-section-title"><i class="fas fa-chart-pie"></i> Summary</div>'+
+      '<div class="im-stats-row" style="grid-template-columns:repeat(2,1fr)">'+
+        '<div class="im-stat"><div class="im-stat-num">'+total+'</div><div class="im-stat-lbl">Total Students</div></div>'+
+        '<div class="im-stat"><div class="im-stat-num">'+HIGHLIGHTS.studentBatches.length+'</div><div class="im-stat-lbl">Active Batches</div></div>'+
+        '<div class="im-stat"><div class="im-stat-num">'+DB.stats.studentsWithAchievements+'</div><div class="im-stat-lbl">With Achievements</div></div>'+
+        '<div class="im-stat"><div class="im-stat-num">'+(total?((DB.stats.studentsWithAchievements/total)*100).toFixed(1):0)+'%</div><div class="im-stat-lbl">Achievement Rate</div></div>'+
+      '</div></div>';
+  } else if(key==='faculty'){
+    title='Faculty Members'; iconCls='fas fa-chalkboard-teacher';
+    var rows2 = HIGHLIGHTS.faculty.map(function(f,i){
+      var colors=['#f97316','#8b5cf6','#06b6d4','#10b981','#f59e0b','#ec4899','#3b82f6','#22c55e'];
+      var c=colors[i%colors.length];
+      return '<div class="im-faculty" style="border-color:'+c+'22">'+
+        '<div class="im-fav" style="background:linear-gradient(135deg,'+c+','+c+'99)">'+f.name.charAt(0)+'</div>'+
+        '<div><div class="im-fname">'+f.name+'</div>'+
+        '<div class="im-frole">'+f.role+' &nbsp;·&nbsp; '+f.exp+'</div>'+
+        '<div style="font-size:0.62rem;color:var(--muted);margin-top:2px">'+f.qual+'</div></div>'+
+      '</div>';
+    }).join('');
+    body='<div class="im-section">'+
+      '<div class="im-section-title"><i class="fas fa-users"></i> All Faculty ('+HIGHLIGHTS.totalFaculty+')</div>'+
+      '<div class="im-faculty-grid" style="grid-template-columns:1fr">'+rows2+'</div></div>';
+  } else if(key==='labs'){
+    title='Laboratories'; iconCls='fas fa-flask';
+    var rows3 = HIGHLIGHTS.labs.map(function(l){
+      return '<div class="im-mission-item">'+
+        '<div class="im-mission-num" style="font-size:1.3rem;background:rgba(52,211,153,0.1);border-color:rgba(52,211,153,0.3);color:#34d399">'+l.icon+'</div>'+
+        '<div><div class="im-mission-title">'+l.name+'</div>'+
+        '<div class="im-mission-desc" style="margin-bottom:4px"><span style="color:#34d399;font-weight:700">'+l.systems+'</span></div>'+
+        '<div class="im-mission-desc">'+l.desc+'</div></div>'+
+      '</div>';
+    }).join('');
+    body='<div class="im-section">'+
+      '<div class="im-section-title"><i class="fas fa-door-open"></i> All Laboratories ('+HIGHLIGHTS.totalLabs+')</div>'+
+      '<div class="im-mission-list">'+rows3+'</div></div>';
+  } else if(key==='achieve'){
+    title='Achievements'; iconCls='fas fa-trophy';
+    var catRows = DB.categories.map(function(c){
+      if(!c.count) return '';
+      return '<div class="im-mission-item">'+
+        '<div class="im-mission-num" style="font-size:1.1rem;background:'+c.color+'18;border-color:'+c.color+'44;color:'+c.color+'">'+c.icon+'</div>'+
+        '<div><div class="im-mission-title">'+c.label+'</div>'+
+        '<div class="im-mission-desc">'+c.count+' achievement'+(c.count!==1?'s':'')+'</div></div>'+
+      '</div>';
+    }).filter(Boolean).join('');
+    var achRows = DB.achievements.slice().reverse().slice(0,20).map(function(a){
+      var cat=DB.categories.find(function(c){return c.id===a.category;})||{icon:'⭐',color:'#888',label:a.category};
+      return '<div class="im-mission-item">'+
+        '<div class="im-mission-num" style="font-size:0.9rem;background:'+cat.color+'18;border-color:'+cat.color+'44;color:'+cat.color+'">'+cat.icon+'</div>'+
+        '<div><div class="im-mission-title">'+a.title+'</div>'+
+        '<div class="im-mission-desc">'+a.student+' &nbsp;·&nbsp; '+a.year+' &nbsp;·&nbsp; '+a.position+
+        (a.verified?' &nbsp;<span style="color:#22c55e;font-size:0.65rem">✓ Verified</span>':' &nbsp;<span style="color:#f59e0b;font-size:0.65rem">⏳ Pending</span>')+'</div>'+
+        (a.desc?'<div class="im-mission-desc" style="margin-top:3px;font-style:italic">'+a.desc+'</div>':'')+'</div>'+
+      '</div>';
+    }).join('');
+    var noAch = !DB.achievements.length ? '<div style="color:var(--muted);font-size:0.82rem;padding:12px 0">No achievements added yet. Submit from the portal to see them here.</div>' : '';
+    body='<div class="im-section">'+
+      '<div class="im-section-title"><i class="fas fa-chart-pie"></i> By Category</div>'+
+      (catRows||'<div style="color:var(--muted);font-size:0.82rem">No data yet.</div>')+
+      '</div>'+
+      '<div class="im-section">'+
+      '<div class="im-section-title"><i class="fas fa-list"></i> Recent Achievements</div>'+
+      (noAch||'<div class="im-mission-list">'+achRows+'</div>')+
+      '</div>'+
+      '<div class="im-section">'+
+      '<div class="im-section-title"><i class="fas fa-chart-bar"></i> Summary</div>'+
+      '<div class="im-stats-row">'+
+        '<div class="im-stat"><div class="im-stat-num">'+DB.stats.totalAchievements+'</div><div class="im-stat-lbl">Total</div></div>'+
+        '<div class="im-stat"><div class="im-stat-num">'+DB.stats.verifiedAchievements+'</div><div class="im-stat-lbl">Verified</div></div>'+
+        '<div class="im-stat"><div class="im-stat-num">'+(DB.stats.totalAchievements-DB.stats.verifiedAchievements)+'</div><div class="im-stat-lbl">Pending</div></div>'+
+      '</div></div>';
+  } else if(key==='partners'){
+    title='Industry Partners'; iconCls='fas fa-handshake';
+    var typeColors={'MoU Partner':'#00d4ff','Placement Partner':'#f97316','Tech Partner':'#a78bfa','Cloud Partner':'#34d399','Academic Partner':'#f59e0b','Industry Body':'#ec4899','Research Partner':'#22c55e'};
+    var pRows = HIGHLIGHTS.industryPartners.map(function(p){
+      var c=typeColors[p.type]||'#00d4ff';
+      return '<div class="im-mission-item">'+
+        '<div class="im-mission-num" style="min-width:38px;font-size:0.6rem;background:'+c+'18;border-color:'+c+'44;color:'+c+'">'+p.type.split(' ')[0]+'</div>'+
+        '<div><div class="im-mission-title">'+p.name+'</div>'+
+        '<div class="im-mission-desc"><span style="color:'+c+';font-weight:600">'+p.type+'</span> &nbsp;·&nbsp; '+p.domain+'</div>'+
+        '<div class="im-mission-desc" style="margin-top:3px">'+p.detail+'</div></div>'+
+      '</div>';
+    }).join('');
+    body='<div class="im-section">'+
+      '<div class="im-section-title"><i class="fas fa-building"></i> All Partners ('+HIGHLIGHTS.totalPartners+')</div>'+
+      '<div class="im-mission-list">'+pRows+'</div></div>';
+  }
+  document.getElementById('hlModalTitle').textContent = title;
+  document.getElementById('hlModalSub').textContent   = sub;
+  document.getElementById('hlModalIcon').innerHTML    = '<i class="'+iconCls+'"></i>';
+  document.getElementById('hlModalBody').innerHTML    = body;
+  document.getElementById('modalOverlay').classList.add('mo-open');
+  modal.classList.add('im-open');
+  document.body.style.overflow='hidden';
+}
+function closeHlModal(){
+  document.getElementById('modal-hl').classList.remove('im-open');
+  document.getElementById('modalOverlay').classList.remove('mo-open');
+  document.body.style.overflow='';
+}
+
+// Particles
+(function(){
+  var c = document.getElementById('dhParticles');
+  for(var i=0;i<18;i++){
+    var p=document.createElement('div'); p.className='dh-particle';
+    var s=Math.random()*3+1;
+    p.style.cssText='width:'+s+'px;height:'+s+'px;left:'+Math.random()*100+'%;top:'+(40+Math.random()*50)+'%;animation-duration:'+(4+Math.random()*6)+'s;animation-delay:'+(Math.random()*5)+'s';
+    c.appendChild(p);
+  }
+})();
+
+// Nav toggle
+function toggleDeptNav(){
+  var l=document.getElementById('dnLinks');
+  l.classList.toggle('open');
+  if(l.classList.contains('open')){
+    Object.assign(l.style,{display:'flex',flexDirection:'column',position:'fixed',top:'68px',left:'0',right:'0',background:'rgba(2,8,24,0.98)',padding:'12px 20px',borderBottom:'1px solid rgba(0,212,255,0.15)',zIndex:'999',gap:'4px'});
+  } else { l.style.display=''; }
+}
+
+// Modal
+var _activeModal = null;
+document.addEventListener('DOMContentLoaded', function(){ buildHlGrid(); });
+function openModal(type){
+  closeModal();
+  var overlay = document.getElementById('modalOverlay');
+  var modal   = document.getElementById('modal-'+type);
+  if(!modal) return;
+  overlay.classList.add('mo-open');
+  modal.classList.add('im-open');
+  document.body.style.overflow='hidden';
+  _activeModal = type;
+}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('mo-open');
+  ['cse','vision','mission'].forEach(function(t){
+    var m=document.getElementById('modal-'+t);
+    if(m) m.classList.remove('im-open');
+  });
+  document.body.style.overflow='';
+  _activeModal=null;
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
+
+// Keyboard on cards
+document.querySelectorAll('.dc-card').forEach(function(card){
+  card.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); card.click(); }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innovation Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0e2a 0%, #0d1b4b 40%, #1a0a3d 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      padding: 48px 20px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-ring {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      border: 3px solid #3b82f6;
+      box-shadow: 0 0 18px #3b82f6aa;
+      overflow: hidden;
+      background: #1e2a5e;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .logo-ring img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+
+
+    h1 {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      font-weight: 800;
+      color: #e0f2fe;
+      letter-spacing: 0.04em;
+      max-width: 700px;
+      line-height: 1.3;
+    }
+
+    h2 {
+      font-size: clamp(0.8rem, 1.8vw, 1rem);
+      font-weight: 600;
+      color: #22d3ee;
+      letter-spacing: 0.08em;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(90deg, #1d4ed8, #7c3aed);
+      padding: 6px 20px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      box-shadow: 0 0 14px #3b82f688;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    /* ── GRID ── */
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 0 20px 48px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(59,130,246,0.35);
+      border-radius: 20px;
+      padding: 36px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 32px rgba(59,130,246,0.35);
+      border-color: rgba(59,130,246,0.75);
+    }
+
+    .icon-circle {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.7rem;
+    }
+
+    .blue   { background: rgba(59,130,246,0.2);  box-shadow: 0 0 14px #3b82f655; }
+    .teal   { background: rgba(20,184,166,0.2);  box-shadow: 0 0 14px #14b8a655; }
+    .purple { background: rgba(139,92,246,0.2);  box-shadow: 0 0 14px #8b5cf655; }
+    .green  { background: rgba(34,197,94,0.2);   box-shadow: 0 0 14px #22c55e55; }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #e2e8f0;
+    }
+
+    .card-sub {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    .btn {
+      margin-top: 6px;
+      padding: 9px 28px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(90deg, #2563eb, #7c3aed);
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: filter 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 10px #3b82f644;
+    }
+
+    .card:hover .btn {
+      filter: brightness(1.25);
+      box-shadow: 0 0 18px #3b82f688;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: auto;
+      padding: 18px 20px;
+      font-size: 0.75rem;
+      color: #475569;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      width: 100%;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 520px) {
+      main { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-ring">
+      <img src="WhatsApp Image 2026-09-29 at 11.22.18 AM.jpeg" alt="College Logo" />
+    </div>
+    <h1>ARUNACHALA COLLEGE OF ENGINEERING FOR WOMEN</h1>
+    <h2>DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING</h2>
+    <span class="badge">💡 INNOVATION PORTAL</span>
+    <p class="tagline">Achievements beyond Expectations</p>
+  </header>
+
+  <main>
+    <div class="card" onclick="location.href='auth.html#student'">
+      <div class="icon-circle blue">🎓</div>
+      <div class="card-title">Students</div>
+      <div class="card-sub">Student Innovation Portal</div>
+      <button class="btn">Login →</button>
+    </div>
+
+    <div class="card" onclick="location.href='auth.html#faculty'">
+      <div class="icon-circle teal">📋</div>
+      <div class="card-title">Faculty</div>
+      <div class="card-sub">Faculty Innovation Portal</div>
+      <button class="btn">Login →</button>
+    </div>
+
+    <div class="card" onclick="location.href='auth.html#parent'">
+      <div class="icon-circle purple">🏠</div>
+      <div class="card-title">Parents</div>
+      <div class="card-sub">Parent Innovation Portal</div>
+      <button class="btn">Login →</button>
+    </div>
+
+    <div class="card" onclick="location.href='auth.html#enterprise'">
+      <div class="icon-circle green">🏢</div>
+      <div class="card-title">Enterprises Hub</div>
+      <div class="card-sub">Industry &amp; Enterprise Portal</div>
+      <button class="btn">Login →</button>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Arunachala College of Engineering for Women – CSE Department
+  </footer>
+
+</body>
+</html>

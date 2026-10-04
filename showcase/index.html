@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSE Department Showcase &amp; Innovation Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="css/home.css" />
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="mainNav">
+  <!-- Left: Brand -->
+  <div class="nav-brand">
+    <div class="nav-logo"><i class="fas fa-microchip"></i></div>
+    <div class="nav-brand-text">
+      <span class="nav-title">CSE Portal</span>
+      <span class="nav-tagline">ACEW • Innovation Hub</span>
+    </div>
+  </div>
+
+  <!-- Center: Nav links -->
+  <ul class="nav-links" id="navLinks">
+    <li>
+      <a href="index.html" class="nav-item active" data-tooltip="Home">
+        <i class="fas fa-home nav-item-icon"></i>
+        <span class="nav-item-label">Home</span>
+        <span class="nav-item-glow"></span>
+      </a>
+    </li>
+    <li>
+      <a href="achievements.html" class="nav-item" data-tooltip="Explore">
+        <i class="fas fa-compass nav-item-icon"></i>
+        <span class="nav-item-label">Explore</span>
+        <span class="nav-item-glow"></span>
+      </a>
+    </li>
+    <li>
+      <a href="about.html" class="nav-item" data-tooltip="About">
+        <i class="fas fa-info-circle nav-item-icon"></i>
+        <span class="nav-item-label">About</span>
+        <span class="nav-item-glow"></span>
+      </a>
+    </li>
+    <li>
+      <a href="categories.html" class="nav-item" data-tooltip="Projects">
+        <i class="fas fa-briefcase nav-item-icon"></i>
+        <span class="nav-item-label">Projects</span>
+        <span class="nav-item-glow"></span>
+      </a>
+    </li>
+    <li>
+      <a href="analytics.html" class="nav-item" data-tooltip="Skills">
+        <i class="fas fa-sparkles nav-item-icon"></i>
+        <span class="nav-item-label">Skills</span>
+        <span class="nav-item-glow"></span>
+      </a>
+    </li>
+    <li>
+      <a href="#contact" class="nav-item" data-tooltip="Contact">
+        <i class="fas fa-comment-dots nav-item-icon"></i>
+        <span class="nav-item-label">Contact</span>
+        <span class="nav-item-glow"></span>
+      </a>
+    </li>
+    <li>
+      <a href="https://scholar.google.com" target="_blank" rel="noopener" class="nav-item" data-tooltip="Google Scholar">
+        <i class="fas fa-graduation-cap nav-item-icon"></i>
+        <span class="nav-item-label">Scholar</span>
+        <span class="nav-item-glow"></span>
+      </a>
+    </li>
+  </ul>
+
+  <!-- Right: Actions -->
+  <div class="nav-right">
+    <!-- Search -->
+    <div class="nav-search-wrap" id="navSearchWrap">
+      <button class="nav-icon-btn" id="navSearchBtn" onclick="toggleNavSearch()" data-tooltip="Search">
+        <i class="fas fa-search"></i>
+      </button>
+      <div class="nav-search-expand" id="navSearchExpand">
+        <input type="text" id="navSearchInput" placeholder="Search..." onkeydown="if(event.key==='Escape')toggleNavSearch()" />
+        <button onclick="toggleNavSearch()"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+
+    <!-- Notifications -->
+    <div class="notif-wrap" id="notifWrap">
+      <button class="nav-icon-btn notif-btn" id="notifBtn" aria-label="Notifications" aria-expanded="false" aria-haspopup="true" onclick="toggleNotifPanel()">
+        <i class="fas fa-bell"></i>
+        <span class="notif-dot" id="notifDot" aria-hidden="true"></span>
+      </button>
+
+      <!-- Notification panel — hidden by default, shown only on click -->
+      <div class="notif-panel" id="notifPanel" role="dialog" aria-label="Notifications" aria-modal="false">
+        <div class="notif-panel-header">
+          <span class="notif-panel-title">Notifications</span>
+          <span class="notif-count" id="notifCount">0</span>
+        </div>
+        <div class="notif-actions">
+          <button class="notif-action-btn" onclick="markAllRead()">Mark all as read</button>
+          <button class="notif-action-btn notif-action-clear" onclick="clearNotifications()">Clear all</button>
+        </div>
+        <div class="notif-list" id="notifList"></div>
+        <div class="notif-empty" id="notifEmpty" style="display:none">
+          <i class="fas fa-bell-slash"></i>
+          <span>No notifications</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile -->
+    <div class="nav-profile" id="navProfile" onclick="toggleDropdown()" data-tooltip="Profile">
+      <div class="profile-avatar" id="navAvatar">S</div>
+      <div class="nav-profile-text">
+        <span class="profile-label" id="navUserName">Student</span>
+        <span class="nav-portal-badge" id="navPortalBadge">Student Portal</span>
+      </div>
+      <i class="fas fa-chevron-down profile-arrow" id="profileArrow"></i>
+      <div class="profile-dropdown" id="profileDropdown">
+        <div class="dropdown-user-info">
+          <div class="dropdown-avatar" id="dropdownAvatar">S</div>
+          <div>
+            <div class="dropdown-name" id="dropdownName">Student</div>
+            <div class="dropdown-portal" id="dropdownPortal">Student Portal</div>
+          </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <a href="#"><i class="fas fa-user"></i> My Profile</a>
+        <a href="#"><i class="fas fa-trophy"></i> My Achievements</a>
+        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+        <div class="dropdown-divider"></div>
+        <a href="#" onclick="doLogout()" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hamburger -->
+  <button class="hamburger" id="hamburgerBtn" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile bottom nav -->
+<nav class="mobile-bottom-nav" id="mobileBottomNav">
+  <a href="index.html" class="mbn-item active" data-tooltip="Home"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="achievements.html" class="mbn-item" data-tooltip="Explore"><i class="fas fa-compass"></i><span>Explore</span></a>
+  <a href="about.html" class="mbn-item" data-tooltip="About"><i class="fas fa-info-circle"></i><span>About</span></a>
+  <a href="categories.html" class="mbn-item" data-tooltip="Projects"><i class="fas fa-briefcase"></i><span>Projects</span></a>
+  <a href="#contact" class="mbn-item" data-tooltip="Contact"><i class="fas fa-comment-dots"></i><span>Contact</span></a>
+  <a href="https://scholar.google.com" target="_blank" rel="noopener" class="mbn-item" data-tooltip="Google Scholar"><i class="fas fa-graduation-cap"></i><span>Scholar</span></a>
+</nav>
+
+<!-- WELCOME BANNER -->
+<div class="welcome-banner" id="welcomeBanner" style="display:none;">
+  <div class="welcome-inner">
+    <div class="welcome-left">
+      <div class="welcome-avatar" id="welcomeAvatar">S</div>
+      <div class="welcome-text">
+        <span class="welcome-greeting" id="welcomeGreeting">Good Morning, Student! 👋</span>
+        <span class="welcome-name" id="welcomeName">Good Morning</span>
+      </div>
+      <span class="welcome-portal-badge" id="welcomePortalBadge">Student Portal</span>
+    </div>
+    <div class="welcome-right">
+      <span class="welcome-date" id="welcomeDate"></span>
+      <button class="welcome-dismiss" onclick="dismissWelcome()" title="Dismiss"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- Circuit board SVG background -->
+  <div class="circuit-bg" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <g stroke="rgba(249,115,22,0.07)" stroke-width="1" fill="none">
+        <!-- Horizontal lines -->
+        <line x1="0" y1="120" x2="1440" y2="120"/>
+        <line x1="0" y1="280" x2="1440" y2="280"/>
+        <line x1="0" y1="440" x2="1440" y2="440"/>
+        <line x1="0" y1="600" x2="1440" y2="600"/>
+        <!-- Vertical lines -->
+        <line x1="180" y1="0" x2="180" y2="800"/>
+        <line x1="420" y1="0" x2="420" y2="800"/>
+        <line x1="660" y1="0" x2="660" y2="800"/>
+        <line x1="900" y1="0" x2="900" y2="800"/>
+        <line x1="1140" y1="0" x2="1140" y2="800"/>
+        <line x1="1380" y1="0" x2="1380" y2="800"/>
+        <!-- Circuit traces -->
+        <path d="M0,200 L120,200 L120,160 L300,160 L300,200 L480,200"/>
+        <path d="M600,320 L720,320 L720,280 L900,280 L900,360 L1080,360"/>
+        <path d="M1200,120 L1320,120 L1320,200 L1440,200"/>
+        <path d="M0,500 L60,500 L60,440 L240,440 L240,520 L420,520"/>
+        <path d="M840,600 L960,600 L960,520 L1140,520 L1140,600 L1300,600"/>
+        <!-- Nodes -->
+        <circle cx="120" cy="200" r="3" fill="rgba(249,115,22,0.2)"/>
+        <circle cx="300" cy="160" r="3" fill="rgba(249,115,22,0.2)"/>
+        <circle cx="720" cy="280" r="3" fill="rgba(249,115,22,0.2)"/>
+        <circle cx="900" cy="360" r="3" fill="rgba(249,115,22,0.2)"/>
+        <circle cx="1320" cy="120" r="3" fill="rgba(249,115,22,0.2)"/>
+        <circle cx="60" cy="440" r="3" fill="rgba(249,115,22,0.2)"/>
+        <circle cx="960" cy="520" r="3" fill="rgba(249,115,22,0.2)"/>
+        <!-- Larger accent nodes -->
+        <circle cx="420" cy="280" r="5" fill="none" stroke="rgba(249,115,22,0.15)"/>
+        <circle cx="420" cy="280" r="2" fill="rgba(249,115,22,0.25)"/>
+        <circle cx="900" cy="440" r="5" fill="none" stroke="rgba(249,115,22,0.15)"/>
+        <circle cx="900" cy="440" r="2" fill="rgba(249,115,22,0.25)"/>
+        <circle cx="660" cy="600" r="5" fill="none" stroke="rgba(249,115,22,0.15)"/>
+        <circle cx="660" cy="600" r="2" fill="rgba(249,115,22,0.25)"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+  <div class="hero-glow g3"></div>
+
+  <div class="hero-content">
+    <!-- TOP BADGE -->
+    <div class="hero-top-badge">
+      <span class="htb-dot"></span>
+      <i class="fas fa-microchip"></i>
+      Innovation Hub
+    </div>
+
+    <!-- AI ASSISTANT BUTTON -->
+    <button class="hero-ai-btn" onclick="openAIAssistant()">
+      <span class="ai-btn-glow"></span>
+      <i class="fas fa-robot"></i>
+      <span>Explore with the AI Innovation Assistant</span>
+      <span class="ai-btn-arrow">→</span>
+    </button>
+
+    <!-- MAIN HEADING -->
+    <h1 class="hero-main-heading">
+      <span class="hmh-line1">CSE Department Showcase</span>
+      <span class="hmh-line2">&amp; Innovation Portal</span>
+    </h1>
+
+    <!-- SUBTITLE -->
+    <p class="hero-subtitle">
+      Discover student projects, hackathons, research, patents, and startup ideas<br class="hero-br"/>
+      from Arunachala College of Engineering for Women.
+    </p>
+
+    <!-- SEARCH BAR -->
+    <div class="hero-search-wrap">
+      <div class="hero-search-bar">
+        <i class="fas fa-search hero-search-icon"></i>
+        <input type="text" id="heroSearch" placeholder="Search projects, students, technologies..." autocomplete="off" />
+        <button class="hero-search-btn" onclick="handleHeroSearch()">Search</button>
+      </div>
+      <div class="hero-filters">
+        <button class="hf-btn active" data-filter="all">All</button>
+        <button class="hf-btn" data-filter="hackathon">Hackathons</button>
+        <button class="hf-btn" data-filter="research">Research</button>
+        <button class="hf-btn" data-filter="patent">Patents</button>
+        <button class="hf-btn" data-filter="startup">Startups</button>
+        <button class="hf-btn" data-filter="project">Projects</button>
+      </div>
+    </div>
+
+    <!-- STATS ROW -->
+    <div class="hero-stats-row">
+      <div class="hsr-stat">
+        <span class="hsr-num" id="hStat1">0</span>
+        <span class="hsr-label">Students</span>
+        <span class="hsr-detail">Enrolled across all batches</span>
+      </div>
+      <div class="hsr-div"></div>
+      <div class="hsr-stat">
+        <span class="hsr-num" id="hStat2">0</span>
+        <span class="hsr-label">Achievements</span>
+        <span class="hsr-detail">Verified & showcased</span>
+      </div>
+      <div class="hsr-div"></div>
+      <div class="hsr-stat">
+        <span class="hsr-num" id="hStat3">0</span>
+        <span class="hsr-label">Categories</span>
+        <span class="hsr-detail">Innovation, Research & more</span>
+      </div>
+      <div class="hsr-div"></div>
+      <div class="hsr-stat">
+        <span class="hsr-num">18</span>
+        <span class="hsr-label">Faculty</span>
+        <span class="hsr-detail">Experienced & dedicated</span>
+      </div>
+      <div class="hsr-div"></div>
+      <div class="hsr-stat">
+        <span class="hsr-num">92%</span>
+        <span class="hsr-label">Placement</span>
+        <span class="hsr-detail">Industry placement rate</span>
+      </div>
+    </div>
+
+    <!-- BOTTOM LINK -->
+    <div class="hero-bottom-link">
+      <a href="#about" class="hbl-link">
+        <i class="fas fa-graduation-cap"></i>
+        Education for everyone
+        <span class="hbl-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="cards-section">
+  <div class="section-header">
+    <h2 class="section-title">Explore the Portal</h2>
+    <p class="section-sub">Everything you need to track, showcase and celebrate student excellence</p>
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- TOP PERFORMERS -->
+    <div class="pcard" onclick="window.location.href='top-performers.html'">
+      <div class="pcard-left">
+        <div class="pcard-icon orange-icon"><i class="fas fa-trophy"></i></div>
+        <h3 class="pcard-title">Top Performers</h3>
+        <p class="pcard-desc">Ranked list of students with the most verified achievements.</p>
+        <button class="pcard-btn orange-btn">View Rankings <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="pcard-right podium-art">
+        <div class="podium-wrap">
+          <div class="pod-person p2">
+            <div class="pod-head"></div>
+            <div class="pod-body"></div>
+            <i class="fas fa-medal pod-medal silver"></i>
+          </div>
+          <div class="pod-person p1">
+            <div class="pod-head"></div>
+            <div class="pod-body"></div>
+            <i class="fas fa-trophy pod-trophy"></i>
+          </div>
+          <div class="pod-person p3">
+            <div class="pod-head"></div>
+            <div class="pod-body"></div>
+            <i class="fas fa-medal pod-medal bronze"></i>
+          </div>
+        </div>
+        <div class="pod-blocks">
+          <div class="pod-block pb2"><span>2</span></div>
+          <div class="pod-block pb1"><span>1</span></div>
+          <div class="pod-block pb3"><span>3</span></div>
+        </div>
+        <i class="fas fa-shield-alt pod-shield"></i>
+      </div>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <div class="pcard" onclick="window.location.href='achievements.html'">
+      <div class="pcard-left">
+        <div class="pcard-icon purple-icon"><i class="fas fa-star"></i></div>
+        <h3 class="pcard-title">Achievements</h3>
+        <p class="pcard-desc">Browse and search all student achievements by category, year or batch.</p>
+        <button class="pcard-btn purple-btn">Explore Achievements <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="pcard-right cert-art">
+        <div class="cert-box">
+          <i class="fas fa-certificate cert-icon"></i>
+          <div class="cert-line"></div>
+          <div class="cert-line short"></div>
+          <i class="fas fa-award cert-seal"></i>
+        </div>
+        <div class="medals-row">
+          <i class="fas fa-medal m-gold"></i>
+          <i class="fas fa-medal m-silver"></i>
+          <i class="fas fa-medal m-bronze"></i>
+        </div>
+        <div class="stars-row">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="pcard" onclick="window.location.href='analytics.html'">
+      <div class="pcard-left">
+        <div class="pcard-icon teal-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3 class="pcard-title">Analytics</h3>
+        <p class="pcard-desc">Visual insights on achievement trends across years and batches.</p>
+        <button class="pcard-btn teal-btn">View Analytics <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="pcard-right analytics-art">
+        <div class="mini-stats">
+          <div class="ms"><span class="ms-n">312</span><span class="ms-l">Total</span></div>
+          <div class="ms"><span class="ms-n">240</span><span class="ms-l">Students</span></div>
+          <div class="ms"><span class="ms-n">92%</span><span class="ms-l">Rate</span></div>
+        </div>
+        <div class="mini-bars">
+          <div class="mb" style="height:35%"></div>
+          <div class="mb" style="height:55%"></div>
+          <div class="mb" style="height:45%"></div>
+          <div class="mb" style="height:75%"></div>
+          <div class="mb active" style="height:90%"></div>
+        </div>
+        <svg class="mini-line" viewBox="0 0 100 36" preserveAspectRatio="none">
+          <polyline points="0,32 20,22 40,26 60,12 80,8 100,3" fill="none" stroke="rgba(249,115,22,0.6)" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- SUBMIT PROJECT -->
+    <div class="pcard" onclick="window.location.href='submit.html'">
+      <div class="pcard-left">
+        <div class="pcard-icon indigo-icon"><i class="fas fa-paper-plane"></i></div>
+        <h3 class="pcard-title">Submit Project</h3>
+        <p class="pcard-desc">Submit your project or achievement for faculty verification and public showcase.</p>
+        <button class="pcard-btn indigo-btn">Submit Now <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="pcard-right submit-art">
+        <div class="submit-steps-art">
+          <div class="sa-step"><div class="sa-dot active"></div><span>Fill Form</span></div>
+          <div class="sa-line"></div>
+          <div class="sa-step"><div class="sa-dot"></div><span>Review</span></div>
+          <div class="sa-line"></div>
+          <div class="sa-step"><div class="sa-dot"></div><span>Publish</span></div>
+        </div>
+        <div class="sa-icons">
+          <i class="fas fa-file-alt"></i>
+          <i class="fas fa-user-check"></i>
+          <i class="fas fa-globe"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <div class="pcard" onclick="window.location.href='categories.html'">
+      <div class="pcard-left">
+        <div class="pcard-icon green-icon"><i class="fas fa-folder-open"></i></div>
+        <h3 class="pcard-title">Categories</h3>
+        <p class="pcard-desc">Explore achievements grouped by innovation, research, technical and more.</p>
+        <button class="pcard-btn green-btn">Browse Categories <i class="fas fa-arrow-right"></i></button>
+      </div>
+      <div class="pcard-right cat-art">
+        <div class="cat-tile-grid">
+          <div class="ct"><i class="fas fa-lightbulb"></i><span>Innovation</span></div>
+          <div class="ct"><i class="fas fa-flask"></i><span>Research</span></div>
+          <div class="ct"><i class="fas fa-code"></i><span>Technical</span></div>
+          <div class="ct"><i class="fas fa-ellipsis-h"></i><span>Others</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+
+    <!-- HEADER -->
+    <div class="section-header">
+      <h2 class="section-title">About the Department</h2>
+      <p class="section-sub">Arunachala College of Engineering for Women – Department of Computer Science and Engineering</p>
+    </div>
+
+    <!-- TOP ROW: About + Vision + Mission in one horizontal row -->
+    <div class="about-top-row">
+
+      <!-- Intro Card -->
+      <div class="atr-card" onclick="openCardScreen('about')">
+        <div class="atr-front">
+          <div class="atr-icon orange-atr"><i class="fas fa-microchip"></i></div>
+          <div class="atr-title">About the Department</div>
+          <div class="atr-hint"><i class="fas fa-hand-pointer"></i> Click to view</div>
+        </div>
+      </div>
+
+      <!-- Vision Card -->
+      <div class="atr-card vision-card" onclick="openCardScreen('vision')">
+        <div class="atr-front">
+          <div class="atr-icon indigo-atr"><i class="fas fa-eye"></i></div>
+          <div class="atr-title">Vision</div>
+          <div class="atr-hint"><i class="fas fa-hand-pointer"></i> Click to view</div>
+        </div>
+      </div>
+
+      <!-- Mission Card -->
+      <div class="atr-card mission-card" onclick="openCardScreen('mission')">
+        <div class="atr-front">
+          <div class="atr-icon orange-atr"><i class="fas fa-bullseye"></i></div>
+          <div class="atr-title">Mission</div>
+          <div class="atr-hint"><i class="fas fa-hand-pointer"></i> Click to view</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CARD FULL-SCREEN OVERLAY -->
+    <div class="cs-overlay" id="csOverlay" onclick="closeCardScreen()"></div>
+    <div class="cs-screen" id="csScreen">
+      <div class="cs-header" id="csHeader">
+        <div class="cs-header-left">
+          <div class="cs-icon" id="csIcon"></div>
+          <div>
+            <div class="cs-title" id="csTitle"></div>
+            <div class="cs-sub">Dept. of CSE &nbsp;·&nbsp; ACEW</div>
+          </div>
+        </div>
+        <button class="cs-close" onclick="closeCardScreen()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="cs-body" id="csBody"></div>
+    </div>
+
+    <!-- Vision & Mission Modal -->
+    <div class="vm-overlay" id="vmOverlay" onclick="closeVMModal()"></div>
+    <div class="vm-modal" id="vmModal">
+      <div class="vm-modal-header">
+        <div class="vm-modal-title-row">
+          <div class="vm-modal-icons">
+            <div class="vm-icon" style="width:36px;height:36px"><i class="fas fa-eye"></i></div>
+            <div class="vm-icon" style="width:36px;height:36px;background:rgba(249,115,22,0.12);color:var(--orange)"><i class="fas fa-bullseye"></i></div>
+          </div>
+          <div>
+            <div class="vm-modal-title">Department of CSE – Vision &amp; Mission</div>
+            <div class="vm-modal-sub">Arunachala College of Engineering for Women</div>
+          </div>
+        </div>
+        <button class="stat-modal-close" onclick="closeVMModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="vm-modal-body">
+        <div class="vm-modal-vision">
+          <div class="vm-modal-sec-title"><div class="vm-icon" style="width:32px;height:32px;display:inline-flex"><i class="fas fa-eye"></i></div> Vision</div>
+          <p class="vm-modal-text">To be a centre of excellence in Computer Science and Engineering education, producing globally competent professionals who contribute to technological advancement and societal development.</p>
+        </div>
+        <div class="vm-modal-mission">
+          <div class="vm-modal-sec-title" style="color:var(--orange)"><div class="vm-icon" style="width:32px;height:32px;display:inline-flex;background:rgba(249,115,22,0.12);color:var(--orange)"><i class="fas fa-bullseye"></i></div> Mission</div>
+          <ul class="vm-list" style="margin-top:10px">
+            <li>Provide quality education with strong theoretical and practical foundations.</li>
+            <li>Encourage research, innovation, and entrepreneurship among students.</li>
+            <li>Foster industry–academia collaboration for real-world exposure.</li>
+            <li>Develop ethical, socially responsible computing professionals.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEPT STATS (clickable) -->
+    <div class="about-stats-row">
+      <div class="about-stat-card" onclick="openStatModal('students')" style="cursor:pointer">
+        <div class="about-stat-icon" style="background:rgba(249,115,22,0.12);color:#f97316;"><i class="fas fa-users"></i></div>
+        <div class="about-stat-num">240+</div>
+        <div class="about-stat-label">Students Enrolled</div>
+        <div class="about-stat-hint"><i class="fas fa-hand-pointer"></i> Click for details</div>
+      </div>
+      <div class="about-stat-card" onclick="openStatModal('faculty')" style="cursor:pointer">
+        <div class="about-stat-icon" style="background:rgba(139,92,246,0.12);color:#8b5cf6;"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="about-stat-num">18</div>
+        <div class="about-stat-label">Faculty Members</div>
+        <div class="about-stat-hint"><i class="fas fa-hand-pointer"></i> Click for details</div>
+      </div>
+      <div class="about-stat-card" onclick="openStatModal('labs')" style="cursor:pointer">
+        <div class="about-stat-icon" style="background:rgba(6,182,212,0.12);color:#06b6d4;"><i class="fas fa-flask"></i></div>
+        <div class="about-stat-num">8</div>
+        <div class="about-stat-label">Laboratories</div>
+        <div class="about-stat-hint"><i class="fas fa-hand-pointer"></i> Click for details</div>
+      </div>
+      <div class="about-stat-card" onclick="openStatModal('achievements')" style="cursor:pointer">
+        <div class="about-stat-icon" style="background:rgba(16,185,129,0.12);color:#10b981;"><i class="fas fa-trophy"></i></div>
+        <div class="about-stat-num">312+</div>
+        <div class="about-stat-label">Achievements</div>
+        <div class="about-stat-hint"><i class="fas fa-hand-pointer"></i> Click for details</div>
+      </div>
+      <div class="about-stat-card" onclick="openStatModal('partners')" style="cursor:pointer">
+        <div class="about-stat-icon" style="background:rgba(245,158,11,0.12);color:#f59e0b;"><i class="fas fa-handshake"></i></div>
+        <div class="about-stat-num">25+</div>
+        <div class="about-stat-label">Industry Partners</div>
+        <div class="about-stat-hint"><i class="fas fa-hand-pointer"></i> Click for details</div>
+      </div>
+      <div class="about-stat-card" onclick="openStatModal('placement')" style="cursor:pointer">
+        <div class="about-stat-icon" style="background:rgba(239,68,68,0.12);color:#ef4444;"><i class="fas fa-percentage"></i></div>
+        <div class="about-stat-num">92%</div>
+        <div class="about-stat-label">Placement Rate</div>
+        <div class="about-stat-hint"><i class="fas fa-hand-pointer"></i> Click for details</div>
+      </div>
+    </div>
+
+    <!-- STAT MODAL OVERLAY -->
+    <div class="stat-overlay" id="statOverlay" onclick="closeStatModal()"></div>
+    <div class="stat-modal" id="statModal">
+      <div class="stat-modal-header" id="statModalHeader">
+        <div class="stat-modal-title-row">
+          <div class="stat-modal-icon" id="statModalIcon"></div>
+          <div>
+            <div class="stat-modal-title" id="statModalTitle"></div>
+            <div class="stat-modal-sub">Department of CSE – ACEW</div>
+          </div>
+        </div>
+        <button class="stat-modal-close" onclick="closeStatModal()"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="stat-modal-body" id="statModalBody"></div>
+    </div>
+
+    <!-- PROGRAMMES OFFERED -->
+    <div class="about-block">
+      <div class="about-block-title"><i class="fas fa-graduation-cap"></i> Programmes Offered</div>
+      <div class="about-prog-grid">
+        <div class="about-prog-card">
+          <div class="prog-badge ug">UG</div>
+          <div class="prog-name">B.E. Computer Science and Engineering</div>
+          <div class="prog-meta">4 Years &nbsp;|&nbsp; 60 Seats per batch</div>
+        </div>
+        <div class="about-prog-card">
+          <div class="prog-badge pg">PG</div>
+          <div class="prog-name">M.E. Computer Science and Engineering</div>
+          <div class="prog-meta">2 Years &nbsp;|&nbsp; 18 Seats per batch</div>
+        </div>
+        <div class="about-prog-card">
+          <div class="prog-badge phd">Ph.D</div>
+          <div class="prog-name">Doctor of Philosophy – CSE</div>
+          <div class="prog-meta">Full-time &amp; Part-time</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACULTY -->
+    <div class="about-block">
+      <div class="about-block-title"><i class="fas fa-user-tie"></i> College Management</div>
+      <div class="faculty-grid">
+        <div class="faculty-card">
+          <div class="faculty-avatar" style="background:linear-gradient(135deg,#f97316,#ea580c);">T</div>
+          <div class="faculty-info">
+            <div class="faculty-name">Dr. T.V. Chithra</div>
+            <div class="faculty-role">Head of Department</div>
+            <div class="faculty-qual">B.E, M.E, Ph.D</div>
+          </div>
+          <span class="faculty-badge hod">HoD</span>
+        </div>
+        <div class="faculty-card">
+          <div class="faculty-avatar" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9);">J</div>
+          <div class="faculty-info">
+            <div class="faculty-name">Dr. S. Joseph Jawhar</div>
+            <div class="faculty-role">Principal</div>
+            <div class="faculty-qual">B.E, M.E, Ph.D, M.B.A, M.Sc. (Psy)</div>
+          </div>
+          <span class="faculty-badge staff">Principal</span>
+        </div>
+        <div class="faculty-card">
+          <div class="faculty-avatar" style="background:linear-gradient(135deg,#06b6d4,#0891b2);">K</div>
+          <div class="faculty-info">
+            <div class="faculty-name">Er. K.S. Dharun Surath</div>
+            <div class="faculty-role">Director</div>
+            <div class="faculty-qual">M.E</div>
+          </div>
+          <span class="faculty-badge staff">Director</span>
+        </div>
+        <div class="faculty-card">
+          <div class="faculty-avatar" style="background:linear-gradient(135deg,#10b981,#059669);">K</div>
+          <div class="faculty-info">
+            <div class="faculty-name">Dr. T. Krishnaswamy</div>
+            <div class="faculty-role">Chairman</div>
+            <div class="faculty-qual">M.E, Ph.D</div>
+          </div>
+          <span class="faculty-badge staff">Chairman</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- LABS & FACILITIES -->
+    <div class="about-block">
+      <div class="about-block-title"><i class="fas fa-laptop-code"></i> Laboratories &amp; Facilities</div>
+      <div class="labs-grid">
+        <div class="lab-card"><i class="fas fa-desktop"></i><span>Programming Lab</span><small>60 Systems</small></div>
+        <div class="lab-card"><i class="fas fa-network-wired"></i><span>Networking Lab</span><small>40 Systems</small></div>
+        <div class="lab-card"><i class="fas fa-brain"></i><span>AI &amp; ML Lab</span><small>GPU Workstations</small></div>
+        <div class="lab-card"><i class="fas fa-shield-alt"></i><span>Cyber Security Lab</span><small>Dedicated Servers</small></div>
+        <div class="lab-card"><i class="fas fa-microchip"></i><span>IoT Lab</span><small>Arduino / Raspberry Pi</small></div>
+        <div class="lab-card"><i class="fas fa-project-diagram"></i><span>Project Lab</span><small>24/7 Access</small></div>
+        <div class="lab-card"><i class="fas fa-book-open"></i><span>Digital Library</span><small>10,000+ e-Books</small></div>
+        <div class="lab-card"><i class="fas fa-chalkboard"></i><span>Smart Classrooms</span><small>Interactive Boards</small></div>
+      </div>
+    </div>
+
+    <!-- PEO / PSO FRAMEWORK SECTION -->
+    <div class="pef-section">
+      <!-- Circuit edge decorations -->
+      <div class="pef-circuit pef-circuit-left" aria-hidden="true">
+        <svg width="60" height="340" viewBox="0 0 60 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="30" y1="0" x2="30" y2="340" stroke="rgba(249,115,22,0.12)" stroke-width="1"/>
+          <line x1="10" y1="60" x2="50" y2="60" stroke="rgba(249,115,22,0.12)" stroke-width="1"/>
+          <line x1="10" y1="160" x2="50" y2="160" stroke="rgba(249,115,22,0.12)" stroke-width="1"/>
+          <line x1="10" y1="260" x2="50" y2="260" stroke="rgba(249,115,22,0.12)" stroke-width="1"/>
+          <circle cx="30" cy="60" r="4" fill="none" stroke="rgba(249,115,22,0.3)" stroke-width="1.5"/>
+          <circle cx="30" cy="60" r="1.5" fill="rgba(249,115,22,0.5)"/>
+          <circle cx="30" cy="160" r="4" fill="none" stroke="rgba(249,115,22,0.3)" stroke-width="1.5"/>
+          <circle cx="30" cy="160" r="1.5" fill="rgba(249,115,22,0.5)"/>
+          <circle cx="30" cy="260" r="4" fill="none" stroke="rgba(249,115,22,0.3)" stroke-width="1.5"/>
+          <circle cx="30" cy="260" r="1.5" fill="rgba(249,115,22,0.5)"/>
+        </svg>
+      </div>
+      <div class="pef-circuit pef-circuit-right" aria-hidden="true">
+        <svg width="60" height="340" viewBox="0 0 60 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="30" y1="0" x2="30" y2="340" stroke="rgba(56,189,248,0.12)" stroke-width="1"/>
+          <line x1="10" y1="60" x2="50" y2="60" stroke="rgba(56,189,248,0.12)" stroke-width="1"/>
+          <line x1="10" y1="160" x2="50" y2="160" stroke="rgba(56,189,248,0.12)" stroke-width="1"/>
+          <line x1="10" y1="260" x2="50" y2="260" stroke="rgba(56,189,248,0.12)" stroke-width="1"/>
+          <circle cx="30" cy="60" r="4" fill="none" stroke="rgba(56,189,248,0.3)" stroke-width="1.5"/>
+          <circle cx="30" cy="60" r="1.5" fill="rgba(56,189,248,0.5)"/>
+          <circle cx="30" cy="160" r="4" fill="none" stroke="rgba(56,189,248,0.3)" stroke-width="1.5"/>
+          <circle cx="30" cy="160" r="1.5" fill="rgba(56,189,248,0.5)"/>
+          <circle cx="30" cy="260" r="4" fill="none" stroke="rgba(56,189,248,0.3)" stroke-width="1.5"/>
+          <circle cx="30" cy="260" r="1.5" fill="rgba(56,189,248,0.5)"/>
+        </svg>
+      </div>
+
+      <!-- Header -->
+      <div class="pef-header">
+        <div class="pef-badge"><span class="pef-badge-dot"></span> Academic Framework</div>
+        <h2 class="pef-heading">Program Educational Framework</h2>
+        <p class="pef-sub">Building strong foundations for a brighter future.</p>
+      </div>
+
+      <!-- Two Cards -->
+      <div class="pef-cards">
+
+        <!-- PEO Card -->
+        <div class="pef-card pef-orange" id="peoCard" onclick="window.location.href='peo.html'">
+          <div class="pef-card-glow pef-glow-orange"></div>
+          <div class="pef-card-inner">
+            <div class="pef-icon-wrap pef-icon-orange">
+              <div class="pef-icon-ring"></div>
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <div class="pef-card-content">
+              <div class="pef-tag pef-tag-orange">PEO</div>
+              <h3 class="pef-card-title">Program Educational Objectives</h3>
+              <p class="pef-card-desc">Our vision for shaping competent, ethical and innovative engineers.</p>
+              <button class="pef-btn pef-btn-orange" onclick="event.stopPropagation();window.location.href='peo.html'">
+                View Details <i class="fas fa-arrow-right pef-btn-arrow"></i>
+              </button>
+            </div>
+            <div class="pef-card-arrow pef-arrow-orange"><i class="fas fa-chevron-right"></i></div>
+          </div>
+          <div class="pef-deco pef-deco-orange">
+            <div class="pef-deco-sq s1"></div>
+            <div class="pef-deco-sq s2"></div>
+            <div class="pef-deco-sq s3"></div>
+          </div>
+        </div>
+
+        <!-- PSO Card -->
+        <div class="pef-card pef-blue" id="psoCard" onclick="window.location.href='pso.html'">
+          <div class="pef-card-glow pef-glow-blue"></div>
+          <div class="pef-card-inner">
+            <div class="pef-icon-wrap pef-icon-blue">
+              <div class="pef-icon-ring pef-ring-blue"></div>
+              <i class="fas fa-cog"></i>
+            </div>
+            <div class="pef-card-content">
+              <div class="pef-tag pef-tag-blue">PSO</div>
+              <h3 class="pef-card-title">Program Specific Outcomes</h3>
+              <p class="pef-card-desc">What our students will achieve by the end of the program.</p>
+              <button class="pef-btn pef-btn-blue" onclick="event.stopPropagation();window.location.href='pso.html'">
+                View Details <i class="fas fa-arrow-right pef-btn-arrow"></i>
+              </button>
+            </div>
+            <div class="pef-card-arrow pef-arrow-blue"><i class="fas fa-chevron-right"></i></div>
+          </div>
+          <div class="pef-deco pef-deco-blue">
+            <div class="pef-deco-sq s1"></div>
+            <div class="pef-deco-sq s2"></div>
+            <div class="pef-deco-sq s3"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PEO Details Panel removed — now opens as full-screen page -->
+      <!-- PSO Details Panel removed — now opens as full-screen page -->
+
+    </div>
+
+    <!-- CONTACT & CONNECT -->
+    <div class="cc-section" id="contact">
+      <!-- Ambient glow blobs -->
+      <div class="cc-glow cc-glow-l" aria-hidden="true"></div>
+      <div class="cc-glow cc-glow-r" aria-hidden="true"></div>
+      <!-- Decorative curves -->
+      <svg class="cc-curve cc-curve-tl" viewBox="0 0 200 200" fill="none" aria-hidden="true"><path d="M200 0 Q0 0 0 200" stroke="rgba(249,115,22,0.12)" stroke-width="1.5" fill="none"/><path d="M200 40 Q40 40 40 200" stroke="rgba(249,115,22,0.07)" stroke-width="1" fill="none"/></svg>
+      <svg class="cc-curve cc-curve-br" viewBox="0 0 200 200" fill="none" aria-hidden="true"><path d="M0 200 Q200 200 200 0" stroke="rgba(249,115,22,0.12)" stroke-width="1.5" fill="none"/><path d="M0 160 Q160 160 160 0" stroke="rgba(249,115,22,0.07)" stroke-width="1" fill="none"/></svg>
+
+      <!-- Heading — always visible, click to toggle -->
+      <div class="cc-heading-wrap" onclick="toggleContact()" role="button" tabindex="0" aria-expanded="false" id="ccToggle">
+        <div class="cc-heading-left">
+          <div class="cc-heading-icon"><i class="fas fa-satellite-dish"></i></div>
+          <div>
+            <h2 class="cc-heading">Contact &amp; Connect</h2>
+            <p class="cc-heading-sub">Choose your preferred way to reach us.</p>
+          </div>
+        </div>
+        <div class="cc-chevron" id="ccChevron"><i class="fas fa-chevron-down"></i></div>
+      </div>
+
+      <!-- Expandable panel -->
+      <div class="cc-panel" id="ccPanel">
+        <p class="cc-subtitle">We're always here to help!</p>
+        <div class="cc-cards">
+
+          <!-- Phone -->
+          <a class="cc-card cc-card-phone" href="tel:+914651250000">
+            <div class="cc-card-glow"></div>
+            <div class="cc-card-icon-wrap">
+              <div class="cc-card-icon-ring"></div>
+              <div class="cc-card-icon"><i class="fas fa-phone-alt"></i></div>
+            </div>
+            <div class="cc-card-label">Phone</div>
+            <div class="cc-card-main">+91 04651 – 250 000</div>
+            <div class="cc-card-detail">Mon – Sat &nbsp;·&nbsp; 9 AM – 5 PM</div>
+            <div class="cc-card-detail" style="margin-top:2px">Dept. of CSE, ACEW</div>
+            <span class="cc-btn cc-btn-primary"><i class="fas fa-phone-alt"></i> Call Now</span>
+          </a>
+
+          <!-- Email -->
+          <a class="cc-card cc-card-outline" href="mailto:cse@acew.edu.in">
+            <div class="cc-card-glow"></div>
+            <div class="cc-card-icon-wrap">
+              <div class="cc-card-icon-ring"></div>
+              <div class="cc-card-icon"><i class="fas fa-envelope"></i></div>
+            </div>
+            <div class="cc-card-label">Email</div>
+            <div class="cc-card-main">cse@acew.edu.in</div>
+            <div class="cc-card-detail">Official department email</div>
+            <div class="cc-card-detail" style="margin-top:2px">Response within 24 hrs</div>
+            <span class="cc-btn cc-btn-outline"><i class="fas fa-paper-plane"></i> Send Email</span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a class="cc-card cc-card-outline" href="https://linkedin.com/school/acew" target="_blank" rel="noopener">
+            <div class="cc-card-glow"></div>
+            <div class="cc-card-icon-wrap">
+              <div class="cc-card-icon-ring"></div>
+              <div class="cc-card-icon"><i class="fab fa-linkedin-in"></i></div>
+            </div>
+            <div class="cc-card-label">LinkedIn</div>
+            <div class="cc-card-main">ACEW – CSE Dept.</div>
+            <div class="cc-card-detail">Follow for updates &amp; news</div>
+            <div class="cc-card-detail" style="margin-top:2px">linkedin.com/school/acew</div>
+            <span class="cc-btn cc-btn-outline"><i class="fab fa-linkedin-in"></i> Visit Profile</span>
+          </a>
+
+          <!-- Website -->
+          <a class="cc-card cc-card-outline" href="https://www.acew.edu.in" target="_blank" rel="noopener">
+            <div class="cc-card-glow"></div>
+            <div class="cc-card-icon-wrap">
+              <div class="cc-card-icon-ring"></div>
+              <div class="cc-card-icon"><i class="fas fa-globe"></i></div>
+            </div>
+            <div class="cc-card-label">Website</div>
+            <div class="cc-card-main">www.acew.edu.in</div>
+            <div class="cc-card-detail">Official college website</div>
+            <div class="cc-card-detail" style="margin-top:2px">Admissions &amp; academics info</div>
+            <span class="cc-btn cc-btn-outline"><i class="fas fa-external-link-alt"></i> Visit Website</span>
+          </a>
+
+        </div>
+
+        <!-- Address bar -->
+        <div class="cc-address">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Arunachala College of Engineering for Women, Vellichanthai, Manavilai, Kanyakumari – 629 203, Tamil Nadu, India</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PEF FULL-SCREEN PAGE -->
+<div class="pef-page-overlay" id="pefPageOverlay" onclick="closePEFPage()"></div>
+<div class="pef-page" id="pefPage">
+  <div class="pef-page-header">
+    <div class="pef-page-header-left">
+      <div class="pef-page-icon" id="pefPageIcon"></div>
+      <div>
+        <span class="pef-page-tag" id="pefPageTag"></span>
+        <div class="pef-page-title" id="pefPageTitle"></div>
+        <div class="pef-page-sub">Dept. of CSE &nbsp;·&nbsp; ACEW</div>
+      </div>
+    </div>
+    <button class="pef-page-close" onclick="closePEFPage()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="pef-page-body" id="pefPageBody"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 CSE Department Showcase &amp; Innovation Portal | Arunachala College of Engineering for Women</span>
+    <span class="footer-tag">INNOVATE • RESEARCH • ACHIEVE</span>
+  </div>
+</footer>
+
+<!-- AI ASSISTANT PANEL -->
+<div class="ai-overlay" id="aiOverlay" onclick="closeAIAssistant()"></div>
+<div class="ai-panel" id="aiPanel">
+  <div class="ai-panel-header">
+    <div class="ai-header-left">
+      <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+      <div>
+        <div class="ai-title">AI Project Assistant</div>
+        <div class="ai-status"><span class="ai-dot"></span>Online</div>
+      </div>
+    </div>
+    <button class="ai-close" onclick="closeAIAssistant()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="ai-suggestions" id="aiSuggestions">
+    <button onclick="aiQuery('Find AI projects')">Find AI projects</button>
+    <button onclick="aiQuery('Show Python projects')">Python projects</button>
+    <button onclick="aiQuery('Find IoT projects')">IoT projects</button>
+    <button onclick="aiQuery('Show cybersecurity projects')">Cybersecurity</button>
+    <button onclick="aiQuery('Find final year projects')">Final year</button>
+    <button onclick="aiQuery('Show healthcare projects')">Healthcare</button>
+  </div>
+  <div class="ai-messages" id="aiMessages"></div>
+  <div class="ai-input-bar">
+    <input type="text" id="aiInput" placeholder="Ask about any project..." onkeydown="if(event.key==='Enter')sendAIMessage()" />
+    <button class="ai-send" onclick="sendAIMessage()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/home.js"></script>
+<script src="js/ai-assistant.js"></script>
+<script>
+// ── STAT MODAL ──────────────────────────────────────────
+function openStatModal(key) {
+  var overlay = document.getElementById('statOverlay');
+  var modal   = document.getElementById('statModal');
+  var icon    = document.getElementById('statModalIcon');
+  var title   = document.getElementById('statModalTitle');
+  var body    = document.getElementById('statModalBody');
+  var header  = document.getElementById('statModalHeader');
+
+  var colors = { students:'#f97316', faculty:'#8b5cf6', labs:'#06b6d4', achievements:'#10b981', partners:'#f59e0b', placement:'#ef4444' };
+  var icons  = { students:'fas fa-users', faculty:'fas fa-chalkboard-teacher', labs:'fas fa-flask', achievements:'fas fa-trophy', partners:'fas fa-handshake', placement:'fas fa-percentage' };
+  var titles = { students:'Students Enrolled', faculty:'Faculty Members', labs:'Laboratories', achievements:'Achievements', partners:'Industry Partners', placement:'Placement Rate' };
+
+  var c = colors[key] || '#f97316';
+  icon.innerHTML  = '<i class="' + icons[key] + '"></i>';
+  icon.style.background = c + '20';
+  icon.style.color = c;
+  title.textContent = titles[key];
+  header.style.borderBottom = '1px solid ' + c + '33';
+
+  var html = '';
+
+  if (key === 'students') {
+    html = '<div class="sm-section"><div class="sm-sec-title"><i class="fas fa-layer-group"></i> Batch-wise Breakdown</div>' +
+      HIGHLIGHTS.studentBatches.map(function(b) {
+        return '<div class="sm-row"><div class="sm-badge" style="background:' + c + '18;color:' + c + ';border-color:' + c + '44">' + b.batch + '</div>' +
+          '<div><div class="sm-row-title">' + b.year + '</div>' +
+          '<div class="sm-row-desc">Dept: ' + b.dept + ' &nbsp;|&nbsp; Enrolled: <strong style="color:' + c + '">' + b.students + '</strong></div></div></div>';
+      }).join('') + '</div>' +
+      '<div class="sm-section"><div class="sm-sec-title"><i class="fas fa-chart-pie"></i> Summary</div>' +
+      '<div class="sm-stats"><div class="sm-stat"><div class="sm-stat-n" style="color:' + c + '">' + HIGHLIGHTS.totalStudents + '</div><div class="sm-stat-l">Total Students</div></div>' +
+      '<div class="sm-stat"><div class="sm-stat-n" style="color:' + c + '">' + HIGHLIGHTS.studentBatches.length + '</div><div class="sm-stat-l">Active Batches</div></div>' +
+      '<div class="sm-stat"><div class="sm-stat-n" style="color:' + c + '">' + DB.stats.studentsWithAchievements + '</div><div class="sm-stat-l">With Achievements</div></div></div></div>';
+
+  } else if (key === 'faculty') {
+    var fcolors = ['#f97316','#8b5cf6','#06b6d4','#10b981','#f59e0b','#ec4899','#3b82f6','#22c55e'];
+    html = '<div class="sm-section"><div class="sm-sec-title"><i class="fas fa-users"></i> All Faculty (' + HIGHLIGHTS.totalFaculty + ')</div>' +
+      HIGHLIGHTS.faculty.map(function(f, i) {
+        var fc = fcolors[i % fcolors.length];
+        return '<div class="sm-faculty"><div class="sm-fav" style="background:linear-gradient(135deg,' + fc + ',' + fc + '99)">' + f.name.charAt(0) + '</div>' +
+          '<div><div class="sm-fname">' + f.name + '</div>' +
+          '<div class="sm-frole">' + f.role + ' &nbsp;&middot;&nbsp; ' + f.exp + '</div>' +
+          '<div class="sm-fqual">' + f.qual + '</div></div></div>';
+      }).join('') + '</div>';
+
+  } else if (key === 'labs') {
+    html = '<div class="sm-section"><div class="sm-sec-title"><i class="fas fa-door-open"></i> All Laboratories (' + HIGHLIGHTS.totalLabs + ')</div>' +
+      HIGHLIGHTS.labs.map(function(l) {
+        return '<div class="sm-row"><div class="sm-badge" style="background:#06b6d418;color:#06b6d4;border-color:#06b6d444;font-size:1.1rem">' + l.icon + '</div>' +
+          '<div><div class="sm-row-title">' + l.name + '</div>' +
+          '<div class="sm-row-desc" style="color:#06b6d4;font-weight:700">' + l.systems + '</div>' +
+          '<div class="sm-row-desc">' + l.desc + '</div></div></div>';
+      }).join('') + '</div>';
+
+  } else if (key === 'achievements') {
+    var catRows = DB.categories.filter(function(cat){ return cat.count > 0; }).map(function(cat) {
+      return '<div class="sm-row"><div class="sm-badge" style="background:' + cat.color + '18;color:' + cat.color + ';border-color:' + cat.color + '44;font-size:1rem">' + cat.icon + '</div>' +
+        '<div><div class="sm-row-title">' + cat.label + '</div>' +
+        '<div class="sm-row-desc">' + cat.count + ' achievement' + (cat.count !== 1 ? 's' : '') + '</div></div></div>';
+    }).join('') || '<div class="sm-empty">No achievements submitted yet.</div>';
+    html = '<div class="sm-section"><div class="sm-sec-title"><i class="fas fa-chart-pie"></i> By Category</div>' + catRows + '</div>' +
+      '<div class="sm-section"><div class="sm-sec-title"><i class="fas fa-chart-bar"></i> Summary</div>' +
+      '<div class="sm-stats"><div class="sm-stat"><div class="sm-stat-n" style="color:#10b981">' + DB.stats.totalAchievements + '</div><div class="sm-stat-l">Total</div></div>' +
+      '<div class="sm-stat"><div class="sm-stat-n" style="color:#10b981">' + DB.stats.verifiedAchievements + '</div><div class="sm-stat-l">Verified</div></div>' +
+      '<div class="sm-stat"><div class="sm-stat-n" style="color:#10b981">' + (DB.stats.totalAchievements - DB.stats.verifiedAchievements) + '</div><div class="sm-stat-l">Pending</div></div></div></div>';
+
+  } else if (key === 'partners') {
+    var typeColors = { 'MoU Partner':'#06b6d4','Placement Partner':'#f97316','Tech Partner':'#8b5cf6','Cloud Partner':'#10b981','Academic Partner':'#f59e0b','Industry Body':'#ec4899','Research Partner':'#22c55e' };
+    html = '<div class="sm-section"><div class="sm-sec-title"><i class="fas fa-building"></i> All Partners (' + HIGHLIGHTS.totalPartners + ')</div>' +
+      HIGHLIGHTS.industryPartners.map(function(p) {
+        var pc = typeColors[p.type] || '#06b6d4';
+        return '<div class="sm-row"><div class="sm-badge" style="background:' + pc + '18;color:' + pc + ';border-color:' + pc + '44;font-size:0.6rem;min-width:52px">' + p.type + '</div>' +
+          '<div><div class="sm-row-title">' + p.name + '</div>' +
+          '<div class="sm-row-desc" style="color:' + pc + ';font-weight:600">' + p.domain + '</div>' +
+          '<div class="sm-row-desc">' + p.detail + '</div></div></div>';
+      }).join('') + '</div>';
+
+  } else if (key === 'placement') {
+    html = '<div class="sm-section"><div class="sm-sec-title"><i class="fas fa-chart-line"></i> Placement Overview</div>' +
+      '<div class="sm-stats"><div class="sm-stat"><div class="sm-stat-n" style="color:#ef4444">92%</div><div class="sm-stat-l">Overall Rate</div></div>' +
+      '<div class="sm-stat"><div class="sm-stat-n" style="color:#ef4444">25+</div><div class="sm-stat-l">Companies</div></div>' +
+      '<div class="sm-stat"><div class="sm-stat-n" style="color:#ef4444">240+</div><div class="sm-stat-l">Students Placed</div></div></div></div>' +
+      '<div class="sm-section"><div class="sm-sec-title"><i class="fas fa-building"></i> Top Recruiters</div>' +
+      ['Infosys','TCS','Wipro','HCL Technologies','Cognizant','Accenture','Capgemini','ZOHO','Freshworks','Mphasis'].map(function(name) {
+        return '<div class="sm-row"><div class="sm-badge" style="background:#ef444418;color:#ef4444;border-color:#ef444444"><i class="fas fa-building"></i></div>' +
+          '<div><div class="sm-row-title">' + name + '</div>' +
+          '<div class="sm-row-desc">Active campus recruiter</div></div></div>';
+      }).join('') + '</div>';
+  }
+
+  body.innerHTML = html;
+  overlay.classList.add('open');
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeStatModal() {
+  document.getElementById('statOverlay').classList.remove('open');
+  document.getElementById('statModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeStatModal(); closeCardScreen(); }
+});
+
+var pefData = {
+  peo: {
+    tag: 'PEO', tagClass: 'orange', iconClass: 'orange',
+    icon: '<i class="fas fa-bullseye"></i>',
+    title: 'Program Educational Objectives',
+    desc: 'Our vision for shaping competent, ethical and innovative engineers who contribute to technological advancement and societal development.',
+    items: [
+      { num:'PEO 1', text:'Graduates will apply fundamental knowledge of Computer Science and Engineering to analyse, design and solve complex real-world problems effectively.' },
+      { num:'PEO 2', text:'Graduates will demonstrate professional skills, ethical responsibility, and effective communication in multidisciplinary team environments.' },
+      { num:'PEO 3', text:'Graduates will engage in lifelong learning, research, and professional development to adapt to the rapidly evolving technology landscape.' },
+      { num:'PEO 4', text:'Graduates will contribute to entrepreneurship, innovation, and societal development through technology-driven solutions.' }
+    ]
+  },
+  pso: {
+    tag: 'PSO', tagClass: 'blue', iconClass: 'blue',
+    icon: '<i class="fas fa-cog"></i>',
+    title: 'Program Specific Outcomes',
+    desc: 'What our students will achieve by the end of the program — specific technical and professional competencies aligned with industry needs.',
+    items: [
+      { num:'PSO 1', text:'Design and develop efficient software solutions using modern programming paradigms, frameworks, and software engineering principles.' },
+      { num:'PSO 2', text:'Apply Artificial Intelligence, Machine Learning, and Data Science techniques to analyse data and build intelligent real-world applications.' },
+      { num:'PSO 3', text:'Build secure, scalable, and efficient networked systems with an understanding of cybersecurity principles and cloud computing.' },
+      { num:'PSO 4', text:'Demonstrate effective project management, teamwork, and leadership skills in the development and deployment of software systems.' }
+    ]
+  }
+};
+
+function togglePEF(key) {
+  var d = pefData[key];
+  document.getElementById('pefPageIcon').className = 'pef-page-icon ' + d.iconClass;
+  document.getElementById('pefPageIcon').innerHTML = d.icon;
+  document.getElementById('pefPageTag').className  = 'pef-page-tag ' + d.tagClass;
+  document.getElementById('pefPageTag').textContent = d.tag;
+  document.getElementById('pefPageTitle').textContent = d.title;
+  document.getElementById('pefPageBody').innerHTML =
+    '<p class="pef-page-desc">' + d.desc + '</p>' +
+    '<div class="pef-page-items">' +
+    d.items.map(function(item) {
+      return '<div class="pef-page-item ' + d.tagClass + '">' +
+        '<span class="pef-page-num ' + d.tagClass + '">' + item.num + '</span>' +
+        '<p class="pef-page-item-text">' + item.text + '</p>' +
+      '</div>';
+    }).join('') +
+    '</div>';
+  document.getElementById('pefPageOverlay').classList.add('open');
+  document.getElementById('pefPage').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePEFPage() {
+  document.getElementById('pefPageOverlay').classList.remove('open');
+  document.getElementById('pefPage').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+var csContent = {
+  about: {
+    title: 'About the Department',
+    icon: 'fas fa-microchip',
+    color: '#f97316',
+    html: '<div class="cs-dept-badge"><div class="cs-dept-icon"><i class="fas fa-microchip"></i></div><div><div class="cs-dept-name">Dept. of CSE</div><div class="cs-dept-est">Established 2010 &nbsp;|&nbsp; AICTE Approved</div></div></div>' +
+      '<p class="cs-para">The Department of Computer Science and Engineering at Arunachala College of Engineering for Women is committed to producing technically competent, ethically grounded, and innovation-driven engineers. With state-of-the-art labs, experienced faculty, and a vibrant student community, the department fosters excellence in academics, research, and industry collaboration.</p>' +
+      '<div class="cs-pills"><span class="accred-pill"><i class="fas fa-check-circle"></i> AICTE Approved</span><span class="accred-pill"><i class="fas fa-check-circle"></i> Anna University Affiliated</span><span class="accred-pill"><i class="fas fa-check-circle"></i> NBA Accredited</span></div>'
+  },
+  vision: {
+    title: 'Vision',
+    icon: 'fas fa-eye',
+    color: '#818cf8',
+    html: '<p class="cs-para" style="font-size:1.05rem;line-height:1.9">To be a centre of excellence in Computer Science and Engineering education, producing globally competent professionals who contribute to technological advancement and societal development.</p>'
+  },
+  mission: {
+    title: 'Mission',
+    icon: 'fas fa-bullseye',
+    color: '#f97316',
+    html: '<ul class="cs-list"><li>Provide quality education with strong theoretical and practical foundations.</li><li>Encourage research, innovation, and entrepreneurship among students.</li><li>Foster industry–academia collaboration for real-world exposure.</li><li>Develop ethical, socially responsible computing professionals.</li></ul>'
+  }
+};
+
+function openCardScreen(key) {
+  var d = csContent[key];
+  var icon = document.getElementById('csIcon');
+  icon.innerHTML = '<i class="' + d.icon + '"></i>';
+  icon.style.background = d.color + '20';
+  icon.style.color = d.color;
+  document.getElementById('csHeader').style.borderBottom = '1px solid ' + d.color + '33';
+  document.getElementById('csTitle').textContent = d.title;
+  document.getElementById('csBody').innerHTML = d.html;
+  document.getElementById('csOverlay').classList.add('open');
+  document.getElementById('csScreen').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCardScreen() {
+  document.getElementById('csOverlay').classList.remove('open');
+  document.getElementById('csScreen').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleATRCard(card) {
+  card.classList.toggle('open');
+}
+
+function toggleNavSearch() {
+  var wrap = document.getElementById('navSearchWrap');
+  var input = document.getElementById('navSearchInput');
+  wrap.classList.toggle('open');
+  if (wrap.classList.contains('open')) { setTimeout(function(){ input.focus(); }, 200); }
+}
+
+// ── NOTIFICATIONS ──────────────────────────────────────
+var notifications = [
+  { id:1, icon:'fas fa-trophy',    title:'New achievement verified',      msg:'Your hackathon entry has been verified by faculty.',  time:'2 min ago',  read:false },
+  { id:2, icon:'fas fa-star',      title:'Project submitted for review',  msg:'Your AI project is now under faculty review.',         time:'1 hr ago',   read:false },
+  { id:3, icon:'fas fa-bell',      title:'Portal update available',       msg:'New features have been added to the Innovation Portal.',time:'Today',      read:false },
+  { id:4, icon:'fas fa-user-check',title:'Profile approved',              msg:'Your student profile has been approved.',              time:'Yesterday',  read:true  },
+  { id:5, icon:'fas fa-award',     title:'Top performer badge earned',    msg:'You have been added to the top performers list.',      time:'2 days ago', read:true  }
+];
+
+function renderNotifications() {
+  var list  = document.getElementById('notifList');
+  var empty = document.getElementById('notifEmpty');
+  var count = document.getElementById('notifCount');
+  var dot   = document.getElementById('notifDot');
+  var unread = notifications.filter(function(n){ return !n.read; }).length;
+
+  count.textContent = unread;
+  count.style.display = unread > 0 ? '' : 'none';
+  dot.style.display   = unread > 0 ? '' : 'none';
+
+  if (notifications.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = 'flex';
+    return;
+  }
+  empty.style.display = 'none';
+  list.innerHTML = notifications.map(function(n) {
+    return '<div class="notif-item' + (n.read ? '' : ' notif-unread') + '" onclick="markRead(' + n.id + ')">' +
+      '<div class="notif-item-icon"><i class="' + n.icon + '"></i></div>' +
+      '<div class="notif-item-body">' +
+        '<div class="notif-item-title">' + n.title + '</div>' +
+        '<div class="notif-item-msg">'   + n.msg   + '</div>' +
+        '<div class="notif-item-time">'  + n.time  + '</div>' +
+      '</div>' +
+      (n.read ? '' : '<span class="notif-unread-dot" aria-label="Unread"></span>') +
+    '</div>';
+  }).join('');
+}
+
+function markRead(id) {
+  notifications = notifications.map(function(n){ return n.id === id ? Object.assign({}, n, {read:true}) : n; });
+  renderNotifications();
+}
+
+function markAllRead() {
+  notifications = notifications.map(function(n){ return Object.assign({}, n, {read:true}); });
+  renderNotifications();
+}
+
+function clearNotifications() {
+  notifications = [];
+  renderNotifications();
+}
+
+function toggleNotifPanel() {
+  var panel = document.getElementById('notifPanel');
+  var btn   = document.getElementById('notifBtn');
+  var isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', String(!isOpen));
+}
+
+function closeNotifPanel() {
+  var panel = document.getElementById('notifPanel');
+  var btn   = document.getElementById('notifBtn');
+  panel.classList.remove('open');
+  btn.setAttribute('aria-expanded', 'false');
+}
+
+document.addEventListener('click', function(e) {
+  var wrap = document.getElementById('notifWrap');
+  if (wrap && !wrap.contains(e.target)) closeNotifPanel();
+  var searchWrap = document.getElementById('navSearchWrap');
+  if (searchWrap && searchWrap.classList.contains('open') && !searchWrap.contains(e.target)) {
+    searchWrap.classList.remove('open');
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeNotifPanel(); closePEFPage(); }
+});
+
+renderNotifications();
+
+function toggleContact() {
+  var panel   = document.getElementById('ccPanel');
+  var chevron = document.getElementById('ccChevron');
+  var toggle  = document.getElementById('ccToggle');
+  var isOpen  = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  chevron.classList.toggle('open', !isOpen);
+  toggle.setAttribute('aria-expanded', String(!isOpen));
+}
+document.getElementById('ccToggle').addEventListener('keydown', function(e){
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleContact(); }
+});
+</script>
+</body>
+</html>

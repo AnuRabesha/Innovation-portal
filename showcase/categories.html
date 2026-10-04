@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories – Campus Achievements</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/subpage.css" />
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="nav-logo"><i class="fas fa-graduation-cap"></i></div>
+    <div class="nav-brand-text">
+      <span class="nav-title">Campus Achievements</span>
+      <span class="nav-tagline">Learn • Grow • Achieve</span>
+    </div>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="achievements.html">Explore</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon-btn"><i class="fas fa-search"></i></button>
+    <button class="nav-icon-btn notif-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+    <div class="nav-profile" id="navProfile" onclick="toggleDropdown()">
+      <div class="profile-avatar" id="navAvatar">S</div>
+      <div class="nav-profile-text">
+        <span class="profile-label" id="navUserName">Student</span>
+        <span class="nav-portal-badge" id="navPortalBadge">Student Portal</span>
+      </div>
+      <i class="fas fa-chevron-down profile-arrow" id="profileArrow"></i>
+      <div class="profile-dropdown" id="profileDropdown">
+        <div class="dropdown-user-info">
+          <div class="dropdown-avatar" id="dropdownAvatar">S</div>
+          <div>
+            <div class="dropdown-name" id="dropdownName">Student</div>
+            <div class="dropdown-portal" id="dropdownPortal">Student Portal</div>
+          </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="submit.html"><i class="fas fa-paper-plane"></i> Submit Project</a>
+        <div class="dropdown-divider"></div>
+        <a href="#" onclick="doLogout()" class="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+    </div>
+  </div>
+  <button class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="subpage-hero green-hero">
+  <div class="subpage-hero-inner">
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <div class="subpage-icon green-icon-lg"><i class="fas fa-folder-open"></i></div>
+    <h1 class="subpage-title">Categories</h1>
+    <p class="subpage-desc">Explore achievements grouped by innovation, research, technical and more</p>
+  </div>
+</div>
+
+<div class="subpage-content" style="max-width:1100px;">
+
+  <!-- GROUP FILTER BAR -->
+  <div class="cat-filter-bar">
+    <button class="cat-fb active" data-group="all"><i class="fas fa-th"></i> Browse Categories</button>
+    <button class="cat-fb" data-group="Innovation"><i class="fas fa-lightbulb"></i> Innovation</button>
+    <button class="cat-fb" data-group="Research"><i class="fas fa-flask"></i> Research</button>
+    <button class="cat-fb" data-group="Technical"><i class="fas fa-code"></i> Technical</button>
+    <button class="cat-fb" data-group="Others"><i class="fas fa-ellipsis-h"></i> Others</button>
+  </div>
+
+  <!-- CATEGORY GROUPS -->
+  <div class="cat-groups" id="catGroups"></div>
+
+  <!-- FILTERED ACHIEVEMENTS PANEL -->
+  <div id="catAchPanel" style="display:none;">
+    <div class="cat-ach-header">
+      <span id="catAchTitle" class="cat-ach-title"></span>
+      <span id="catAchCount" class="cat-ach-count"></span>
+    </div>
+    <div class="ach-grid-sub" id="catAchGrid"></div>
+    <div class="empty-state" id="catAchEmpty" style="display:none;">
+      <i class="fas fa-inbox"></i>
+      <p>No achievements found in this category yet.<br/>Be the first to <a href="submit.html" style="color:var(--orange);">submit one</a>!</p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-copy">© 2025 College Student Achievement Portal | Built for a Better Tomorrow</span>
+    <span class="footer-tagline">DISCOVER • SHOWCASE • GROW</span>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/home.js"></script>
+<script>
+(function() {
+  // Groups that belong to each top-level filter
+  var GROUP_MAP = {
+    'Innovation': ['Innovation'],
+    'Research':   ['Research'],
+    'Technical':  ['Technical'],
+    'Others':     ['Professional', 'Recognition']
+  };
+  var ALL_GROUPS = ['Innovation','Research','Technical','Professional','Recognition'];
+
+  var activeGroup = 'all'; // 'all' | 'Innovation' | 'Research' | 'Technical' | 'Others'
+  var activeCatId = null;  // specific category id, or null = show all in group
+
+  // ── RENDER CATEGORY GROUPS ──────────────────────────
+  function renderGroups(filterGroup) {
+    var total = DB.stats.totalAchievements || 1;
+    var groups = filterGroup === 'all' ? ALL_GROUPS
+               : filterGroup === 'Others' ? ['Professional','Recognition']
+               : [filterGroup];
+
+    var el = document.getElementById('catGroups');
+    el.innerHTML = groups.map(function(g) {
+      var cats = DB.categories.filter(function(c) { return c.group === g; });
+      return '<div>' +
+        '<div class="cat-group-title">' + g + '</div>' +
+        '<div class="cat-cards-grid">' +
+          cats.map(function(c) {
+            var pct = ((c.count / total) * 100).toFixed(1);
+            var isActive = activeCatId === c.id;
+            return '<div class="cat-card-sub' + (isActive ? ' cat-card-active' : '') + '" data-catid="' + c.id + '" data-group="' + g + '">' +
+              '<div class="cat-card-icon" style="background:' + c.color + '22;color:' + c.color + ';border:1px solid ' + c.color + '33">' + c.icon + '</div>' +
+              '<div class="cat-card-info"><div class="cat-card-name">' + c.label + '</div><div class="cat-card-count">' + c.count + ' achievements</div></div>' +
+              '<div class="cat-card-pct" style="color:' + c.color + '">' + pct + '%</div>' +
+            '</div>';
+          }).join('') +
+        '</div></div>';
+    }).join('');
+
+    // Attach click handlers
+    el.querySelectorAll('.cat-card-sub').forEach(function(card) {
+      card.addEventListener('click', function() {
+        var cid = card.dataset.catid;
+        if (activeCatId === cid) {
+          // Toggle off — deselect
+          activeCatId = null;
+          renderGroups(activeGroup);
+          showAchievements(null, null);
+        } else {
+          activeCatId = cid;
+          renderGroups(activeGroup);
+          var cat = DB.categories.find(function(c) { return c.id === cid; });
+          showAchievements(cid, cat ? cat.label : cid);
+        }
+      });
+    });
+  }
+
+  // ── RENDER ACHIEVEMENTS PANEL ───────────────────────
+  function showAchievements(catId, catLabel) {
+    var panel = document.getElementById('catAchPanel');
+    var grid  = document.getElementById('catAchGrid');
+    var empty = document.getElementById('catAchEmpty');
+    var title = document.getElementById('catAchTitle');
+    var count = document.getElementById('catAchCount');
+
+    if (!catId) {
+      panel.style.display = 'none';
+      return;
+    }
+
+    var achs = DB.achievements.filter(function(a) { return a.category === catId; });
+    title.textContent = catLabel;
+    count.textContent = achs.length + ' achievement' + (achs.length !== 1 ? 's' : '');
+    panel.style.display = 'block';
+
+    if (!achs.length) {
+      grid.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+    empty.style.display = 'none';
+
+    var cat = DB.categories.find(function(c) { return c.id === catId; });
+    var color = cat ? cat.color : '#f97316';
+
+    grid.innerHTML = achs.map(function(a) {
+      var verBadge = a.verified
+        ? '<span class="ach-verified"><i class="fas fa-check-circle"></i> Verified</span>'
+        : '<span class="ach-pending"><i class="fas fa-clock"></i> Pending</span>';
+      return '<div class="ach-card-sub">' +
+        '<div class="ach-card-sub-top">' +
+          '<span class="ach-cat-pill" style="background:' + color + '18;color:' + color + ';border:1px solid ' + color + '33">' + (cat ? cat.icon + ' ' : '') + (cat ? cat.label : catId) + '</span>' +
+          verBadge +
+        '</div>' +
+        '<div class="ach-title-sub">' + a.title + '</div>' +
+        '<div class="ach-meta-sub">' +
+          '<span><i class="fas fa-user" style="color:' + color + ';margin-right:5px"></i>' + a.student + '</span>' +
+          (a.batch ? '<span><i class="fas fa-users" style="color:#64748b;margin-right:5px"></i>' + a.batch + '</span>' : '') +
+          (a.year  ? '<span><i class="fas fa-calendar" style="color:#64748b;margin-right:5px"></i>' + a.year + '</span>' : '') +
+          (a.event ? '<span><i class="fas fa-map-marker-alt" style="color:#64748b;margin-right:5px"></i>' + a.event + '</span>' : '') +
+        '</div>' +
+        (a.position ? '<span class="ach-pos-pill"><i class="fas fa-trophy" style="margin-right:5px"></i>' + a.position + '</span>' : '') +
+      '</div>';
+    }).join('');
+
+    // Smooth scroll to panel
+    setTimeout(function() { panel.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 60);
+  }
+
+  // ── FILTER BAR CLICKS ───────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    renderGroups('all');
+
+    document.querySelectorAll('.cat-fb').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.cat-fb').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeGroup = btn.dataset.group;
+        activeCatId = null;
+        renderGroups(activeGroup);
+        document.getElementById('catAchPanel').style.display = 'none';
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

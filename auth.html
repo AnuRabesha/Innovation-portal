@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innovation Portal – Authentication</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       PORTAL SELECTOR OVERLAY
+  ══════════════════════════════════════════ -->
+  <div id="selectorScreen" class="screen active">
+    <div class="selector-wrap">
+      <div class="selector-logo">
+        <img src="WhatsApp Image 2026-09-29 at 11.22.18 AM.jpeg" alt="Logo" onerror="this.style.display='none'" />
+        <div class="selector-brand">
+          <span class="brand-title">INNOVATION PORTAL</span>
+          <span class="brand-sub">Arunachala College of Engineering for Women</span>
+        </div>
+      </div>
+      <h2 class="selector-heading">Select Your Portal</h2>
+      <div class="portal-grid">
+        <button class="portal-btn" onclick="openAuth('student')">
+          <span class="portal-icon">🎓</span>
+          <span class="portal-label">Student</span>
+        </button>
+        <button class="portal-btn" onclick="openAuth('faculty')">
+          <span class="portal-icon">📋</span>
+          <span class="portal-label">Faculty</span>
+        </button>
+        <button class="portal-btn" onclick="openAuth('parent')">
+          <span class="portal-icon">🏠</span>
+          <span class="portal-label">Parent</span>
+        </button>
+        <button class="portal-btn" onclick="openAuth('enterprise')">
+          <span class="portal-icon">🏢</span>
+          <span class="portal-label">Enterprise</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       AUTH SCREEN (two-column layout)
+  ══════════════════════════════════════════ -->
+  <div id="authScreen" class="screen">
+    <div class="auth-layout">
+
+      <!-- LEFT PANEL -->
+      <div class="auth-left">
+        <button class="back-btn" onclick="goBack()">← Back</button>
+        <div class="left-logo">
+          <img src="WhatsApp Image 2026-09-29 at 11.22.18 AM.jpeg" alt="Logo" onerror="this.style.display='none'" />
+        </div>
+        <h1 class="left-title">INNOVATION<br/>PORTAL</h1>
+        <p class="left-college">Arunachala College of Engineering for Women</p>
+        <p class="left-dept">Department of Computer Science & Engineering</p>
+        <div class="left-illustration" id="leftIllustration">🎓</div>
+        <p class="left-desc" id="leftDesc">Access your personalized student dashboard, track achievements, and explore innovation opportunities.</p>
+        <p class="left-tagline">"Achievements beyond Expectations"</p>
+      </div>
+
+      <!-- RIGHT PANEL -->
+      <div class="auth-right">
+
+        <!-- ── STEP 1: REGISTRATION FORM ── -->
+        <div id="formStep" class="auth-card active-card">
+          <div class="card-header">
+            <span class="portal-tag" id="portalTag">Student Portal</span>
+            <div class="tab-row">
+              <button class="tab active" id="tabRegister" onclick="switchTab('register')">Register</button>
+              <button class="tab" id="tabLogin" onclick="switchTab('login')">Login</button>
+            </div>
+          </div>
+
+          <form id="authForm" onsubmit="handleFormSubmit(event)" novalidate>
+
+            <!-- STUDENT REGISTER -->
+            <div id="fields-student-register">
+              <div class="field-group">
+                <label>First Name</label>
+                <input type="text" id="s-fname" placeholder="Enter first name" />
+                <span class="err" id="err-s-fname"></span>
+              </div>
+              <div class="field-group">
+                <label>Last Name</label>
+                <input type="text" id="s-lname" placeholder="Enter last name" />
+                <span class="err" id="err-s-lname"></span>
+              </div>
+              <div class="field-group">
+                <label>Email or Username</label>
+                <input type="text" id="s-email" placeholder="Enter email or username" />
+                <span class="err" id="err-s-email"></span>
+              </div>
+              <div class="field-group">
+                <label>Password</label>
+                <div class="pw-wrap">
+                  <input type="password" id="s-password" placeholder="Create password" />
+                  <button type="button" class="eye-btn" onclick="togglePw('s-password', this)">👁</button>
+                </div>
+                <span class="err" id="err-s-password"></span>
+              </div>
+            </div>
+
+            <!-- STUDENT LOGIN -->
+            <div id="fields-student-login" class="hidden">
+              <div class="field-group">
+                <label>Email or Username</label>
+                <input type="text" id="sl-email" placeholder="Enter email or username" />
+                <span class="err" id="err-sl-email"></span>
+              </div>
+              <div class="field-group">
+                <label>Password</label>
+                <div class="pw-wrap">
+                  <input type="password" id="sl-password" placeholder="Enter password" />
+                  <button type="button" class="eye-btn" onclick="togglePw('sl-password', this)">👁</button>
+                </div>
+                <span class="err" id="err-sl-password"></span>
+              </div>
+            </div>
+
+            <!-- FACULTY REGISTER -->
+            <div id="fields-faculty-register" class="hidden">
+              <div class="field-group">
+                <label>First Name</label>
+                <input type="text" id="f-fname" placeholder="Enter first name" />
+                <span class="err" id="err-f-fname"></span>
+              </div>
+              <div class="field-group">
+                <label>Last Name</label>
+                <input type="text" id="f-lname" placeholder="Enter last name" />
+                <span class="err" id="err-f-lname"></span>
+              </div>
+              <div class="field-group">
+                <label>Faculty ID</label>
+                <input type="text" id="f-id" placeholder="Enter faculty ID" />
+                <span class="err" id="err-f-id"></span>
+              </div>
+              <div class="field-group">
+                <label>Email</label>
+                <input type="email" id="f-email" placeholder="Enter official email" />
+                <span class="err" id="err-f-email"></span>
+              </div>
+              <div class="field-group">
+                <label>Password</label>
+                <div class="pw-wrap">
+                  <input type="password" id="f-password" placeholder="Create password" />
+                  <button type="button" class="eye-btn" onclick="togglePw('f-password', this)">👁</button>
+                </div>
+                <span class="err" id="err-f-password"></span>
+              </div>
+            </div>
+
+            <!-- FACULTY LOGIN -->
+            <div id="fields-faculty-login" class="hidden">
+              <div class="field-group">
+                <label>Faculty ID or Email</label>
+                <input type="text" id="fl-email" placeholder="Enter faculty ID or email" />
+                <span class="err" id="err-fl-email"></span>
+              </div>
+              <div class="field-group">
+                <label>Password</label>
+                <div class="pw-wrap">
+                  <input type="password" id="fl-password" placeholder="Enter password" />
+                  <button type="button" class="eye-btn" onclick="togglePw('fl-password', this)">👁</button>
+                </div>
+                <span class="err" id="err-fl-password"></span>
+              </div>
+            </div>
+
+            <!-- PARENT REGISTER -->
+            <div id="fields-parent-register" class="hidden">
+              <div class="field-group">
+                <label>First Name</label>
+                <input type="text" id="p-fname" placeholder="Enter first name" />
+                <span class="err" id="err-p-fname"></span>
+              </div>
+              <div class="field-group">
+                <label>Last Name</label>
+                <input type="text" id="p-lname" placeholder="Enter last name" />
+                <span class="err" id="err-p-lname"></span>
+              </div>
+              <div class="field-group">
+                <label>Mobile Number</label>
+                <div class="phone-wrap">
+                  <select id="p-country" class="country-code">
+                    <option value="+91">🇮🇳 +91</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+971">🇦🇪 +971</option>
+                  </select>
+                  <input type="tel" id="p-mobile" placeholder="Enter mobile number" />
+                </div>
+                <span class="err" id="err-p-mobile"></span>
+              </div>
+            </div>
+
+            <!-- PARENT LOGIN -->
+            <div id="fields-parent-login" class="hidden">
+              <div class="field-group">
+                <label>Mobile Number</label>
+                <div class="phone-wrap">
+                  <select id="pl-country" class="country-code">
+                    <option value="+91">🇮🇳 +91</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+971">🇦🇪 +971</option>
+                  </select>
+                  <input type="tel" id="pl-mobile" placeholder="Enter mobile number" />
+                </div>
+                <span class="err" id="err-pl-mobile"></span>
+              </div>
+            </div>
+
+            <!-- ENTERPRISE REGISTER -->
+            <div id="fields-enterprise-register" class="hidden">
+              <div class="field-group">
+                <label>First Name</label>
+                <input type="text" id="e-fname" placeholder="Enter first name" />
+                <span class="err" id="err-e-fname"></span>
+              </div>
+              <div class="field-group">
+                <label>Last Name</label>
+                <input type="text" id="e-lname" placeholder="Enter last name" />
+                <span class="err" id="err-e-lname"></span>
+              </div>
+              <div class="field-group">
+                <label>Company Name</label>
+                <input type="text" id="e-company" placeholder="Enter company name" />
+                <span class="err" id="err-e-company"></span>
+              </div>
+              <div class="field-group">
+                <label>Official Email</label>
+                <input type="email" id="e-email" placeholder="Enter company email" />
+                <span class="err" id="err-e-email"></span>
+              </div>
+            </div>
+
+            <!-- ENTERPRISE LOGIN -->
+            <div id="fields-enterprise-login" class="hidden">
+              <div class="field-group">
+                <label>Official Email</label>
+                <input type="email" id="el-email" placeholder="Enter company email" />
+                <span class="err" id="err-el-email"></span>
+              </div>
+            </div>
+
+            <span class="err center-err" id="form-global-err" style="margin-top:4px;"></span>
+            <button type="submit" class="btn-primary" id="nextBtn">
+              <span id="nextBtnText">Next →</span>
+              <span id="nextBtnSpinner" class="spinner hidden"></span>
+            </button>
+
+          </form>
+        </div>
+
+        <!-- ── STEP 2: OTP VERIFICATION ── -->
+        <div id="otpStep" class="auth-card">
+          <div class="otp-header">
+            <div class="otp-icon">🔐</div>
+            <h3>Verify Your <span id="otpChannelLabel">Email</span></h3>
+            <p class="otp-hint">A 6-digit OTP has been sent to<br/><strong id="otpTarget"></strong></p>
+          </div>
+
+          <div class="otp-boxes" id="otpBoxes">
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" />
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" />
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" />
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" />
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" />
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" />
+          </div>
+
+          <div class="otp-timer">
+            OTP expires in <span id="countdown" class="timer-val">05:00</span>
+          </div>
+
+          <span class="err center-err" id="err-otp"></span>
+
+          <button class="btn-primary" id="verifyBtn" onclick="verifyOTP()">
+            <span id="verifyBtnText">Verify OTP</span>
+            <span id="verifyBtnSpinner" class="spinner hidden"></span>
+          </button>
+
+          <div class="resend-row">
+            <span id="resendMsg">Didn't receive it?</span>
+            <button class="resend-btn" id="resendBtn" onclick="resendOTP()" disabled>Resend OTP</button>
+          </div>
+
+          <button class="link-btn" onclick="goToForm()">← Change details</button>
+        </div>
+
+        <!-- ── STEP 3: SUCCESS ── -->
+        <div id="successStep" class="auth-card">
+          <div class="success-wrap">
+            <div class="success-icon">✅</div>
+            <h3>Verified Successfully!</h3>
+            <p id="successMsg">Redirecting to your dashboard...</p>
+            <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+          </div>
+        </div>
+
+      </div><!-- /auth-right -->
+    </div><!-- /auth-layout -->
+  </div><!-- /authScreen -->
+
+  <script src="auth.js"></script>
+</body>
+</html>
