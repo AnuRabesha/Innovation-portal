@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Innovation Portal – Project Presentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --orange:#f97316;--orange-dark:#ea580c;--bg:#0a0a0a;--bg2:#111;
+  --text:#f1f5f9;--muted:#94a3b8;--glass:rgba(255,255,255,0.04);
+  --border:rgba(249,115,22,0.25);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow:hidden;height:100vh;}
+
+/* SLIDES */
+.slide{display:none;width:100vw;height:100vh;position:relative;overflow:hidden;padding:60px 80px;flex-direction:column;justify-content:center;align-items:flex-start;}
+.slide.active{display:flex;}
+
+/* SLIDE BACKGROUNDS */
+.slide-1{background:radial-gradient(ellipse at 30% 40%,#1a0800 0%,#0a0a0a 65%);}
+.slide-2{background:radial-gradient(ellipse at 70% 30%,#0a1a00 0%,#0a0a0a 65%);}
+.slide-3{background:radial-gradient(ellipse at 20% 60%,#00101a 0%,#0a0a0a 65%);}
+.slide-4{background:radial-gradient(ellipse at 80% 50%,#1a001a 0%,#0a0a0a 65%);}
+.slide-5{background:radial-gradient(ellipse at 40% 30%,#001a10 0%,#0a0a0a 65%);}
+.slide-6{background:radial-gradient(ellipse at 60% 70%,#1a0800 0%,#0a0a0a 65%);}
+.slide-7{background:radial-gradient(ellipse at 30% 50%,#00101a 0%,#0a0a0a 65%);}
+.slide-8{background:radial-gradient(ellipse at 70% 40%,#1a0a00 0%,#0a0a0a 65%);}
+.slide-9{background:radial-gradient(ellipse at 50% 50%,#0a001a 0%,#0a0a0a 65%);}
+.slide-10{background:radial-gradient(ellipse at 30% 40%,#1a0800 0%,#0a0a0a 65%);}
+
+/* SLIDE NUMBER */
+.slide-num{position:absolute;top:28px;right:40px;font-size:0.75rem;color:var(--muted);letter-spacing:0.1em;}
+
+/* COLLEGE HEADER BAR */
+.college-bar{position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--orange-dark),var(--orange),#fbbf24);}
+
+/* TAGS */
+.tag{display:inline-block;background:linear-gradient(90deg,var(--orange-dark),var(--orange));color:#fff;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:4px 14px;border-radius:999px;margin-bottom:18px;}
+
+/* TITLES */
+.slide-title{font-size:3rem;font-weight:900;line-height:1.1;background:linear-gradient(135deg,#fff 40%,var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;}
+.slide-subtitle{font-size:1.1rem;color:var(--muted);max-width:600px;line-height:1.6;margin-bottom:32px;}
+.section-title{font-size:2rem;font-weight:800;color:#fff;margin-bottom:8px;}
+.section-sub{font-size:0.9rem;color:var(--muted);margin-bottom:32px;}
+
+/* CARDS GRID */
+.cards{display:grid;gap:16px;}
+.cards-2{grid-template-columns:repeat(2,1fr);}
+.cards-3{grid-template-columns:repeat(3,1fr);}
+.cards-4{grid-template-columns:repeat(4,1fr);}
+.card{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:24px 20px;}
+.card-icon{font-size:2rem;margin-bottom:10px;}
+.card-title{font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.card-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;}
+
+/* STAT CARDS */
+.stat-card{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:24px;text-align:center;}
+.stat-num{font-size:2.2rem;font-weight:900;color:var(--orange);}
+.stat-label{font-size:0.78rem;color:var(--muted);margin-top:4px;}
+
+/* LIST */
+.list{display:flex;flex-direction:column;gap:12px;}
+.list-item{display:flex;align-items:flex-start;gap:12px;background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:14px 18px;}
+.list-icon{font-size:1.3rem;flex-shrink:0;}
+.list-text{font-size:0.85rem;color:var(--muted);line-height:1.5;}
+.list-text strong{color:#fff;display:block;margin-bottom:2px;}
+
+/* TWO COLUMN */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;width:100%;}
+.left-col{}
+.right-col{display:flex;flex-direction:column;gap:14px;}
+
+/* FLOW */
+.flow{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-top:8px;}
+.flow-step{background:var(--glass);border:1px solid var(--border);border-radius:12px;padding:16px 20px;text-align:center;min-width:130px;}
+.flow-step .f-icon{font-size:1.6rem;margin-bottom:6px;}
+.flow-step .f-label{font-size:0.78rem;font-weight:700;color:#fff;}
+.flow-step .f-sub{font-size:0.68rem;color:var(--muted);margin-top:2px;}
+.flow-arrow{font-size:1.4rem;color:var(--orange);padding:0 8px;}
+
+/* SCORE TABLE */
+.score-table{width:100%;border-collapse:collapse;}
+.score-table th{text-align:left;font-size:0.72rem;color:var(--muted);padding:8px 12px;border-bottom:1px solid rgba(255,255,255,0.08);}
+.score-table td{font-size:0.82rem;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.score-table td:last-child{color:var(--orange);font-weight:700;}
+
+/* BADGE ROW */
+.badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+.badge{background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.3);border-radius:999px;padding:6px 16px;font-size:0.75rem;font-weight:600;color:var(--orange);}
+
+/* TECH STACK */
+.tech-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+.tech{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:8px 16px;font-size:0.78rem;font-weight:600;color:#fff;}
+
+/* TITLE SLIDE SPECIAL */
+.title-logo{width:80px;height:80px;border-radius:50%;border:3px solid var(--orange);box-shadow:0 0 30px rgba(249,115,22,0.4);overflow:hidden;margin-bottom:24px;background:#1a0800;display:flex;align-items:center;justify-content:center;font-size:2rem;}
+.title-logo img{width:100%;height:100%;object-fit:cover;}
+.title-college{font-size:0.8rem;color:var(--orange);font-weight:600;letter-spacing:0.06em;margin-bottom:4px;}
+.title-dept{font-size:0.72rem;color:var(--muted);margin-bottom:32px;}
+.title-main{font-size:3.8rem;font-weight:900;line-height:1.05;background:linear-gradient(135deg,#fff 30%,var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;}
+.title-sub{font-size:1rem;color:var(--muted);max-width:560px;line-height:1.6;margin-bottom:36px;}
+.title-meta{display:flex;gap:24px;flex-wrap:wrap;}
+.title-meta-item{font-size:0.78rem;color:var(--muted);}
+.title-meta-item span{color:#fff;font-weight:600;}
+
+/* THANK YOU */
+.ty-center{width:100%;text-align:center;display:flex;flex-direction:column;align-items:center;}
+.ty-icon{font-size:5rem;margin-bottom:24px;}
+.ty-title{font-size:3.5rem;font-weight:900;background:linear-gradient(135deg,#fff,var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:16px;}
+.ty-sub{font-size:1rem;color:var(--muted);max-width:500px;line-height:1.6;margin-bottom:32px;}
+.ty-tagline{font-style:italic;color:rgba(249,115,22,0.7);font-size:1.1rem;}
+
+/* NAVIGATION */
+.nav-bar{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:rgba(10,10,10,0.9);border:1px solid var(--border);border-radius:999px;padding:10px 20px;backdrop-filter:blur(20px);z-index:100;}
+.nav-btn{background:none;border:none;color:var(--muted);font-size:1.1rem;cursor:pointer;padding:4px 10px;border-radius:8px;transition:all 0.2s;font-family:'Inter',sans-serif;}
+.nav-btn:hover{color:#fff;background:rgba(255,255,255,0.08);}
+.nav-counter{font-size:0.78rem;color:var(--muted);min-width:50px;text-align:center;}
+.nav-dots{display:flex;gap:6px;align-items:center;}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;transition:all 0.2s;}
+.dot.active{background:var(--orange);width:18px;border-radius:3px;}
+
+/* PROGRESS BAR */
+.progress{position:fixed;top:6px;left:0;height:3px;background:linear-gradient(90deg,var(--orange-dark),var(--orange));transition:width 0.3s ease;z-index:200;}
+
+/* DECORATIVE GLOW */
+.glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:0.15;}
+.glow-1{width:400px;height:400px;background:var(--orange);top:-100px;right:-100px;}
+.glow-2{width:300px;height:300px;background:#7c3aed;bottom:-80px;left:-80px;}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress" id="progress"></div>
+
+<!-- SLIDE 1: TITLE -->
+<div class="slide slide-1 active">
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="college-bar"></div>
+  <div class="slide-num">01 / 10</div>
+  <div class="title-logo">
+    <img src="WhatsApp Image 2026-09-29 at 11.22.18 AM.jpeg" alt="Logo" onerror="this.style.display='none';this.parentElement.textContent='🎓'"/>
+  </div>
+  <div class="title-college">ARUNACHALA COLLEGE OF ENGINEERING FOR WOMEN</div>
+  <div class="title-dept">Department of Computer Science &amp; Engineering</div>
+  <div class="title-main">INNOVATION<br/>PORTAL</div>
+  <div class="title-sub">A unified web platform to track, verify, and showcase student achievements across all categories — from hackathons to research papers.</div>
+  <div class="title-meta">
+    <div class="title-meta-item">Project Type: <span>Web Application</span></div>
+    <div class="title-meta-item">Tech: <span>HTML · CSS · JavaScript · Python</span></div>
+    <div class="title-meta-item">Year: <span>2025</span></div>
+  </div>
+</div>
+
+<!-- SLIDE 2: PROBLEM STATEMENT -->
+<div class="slide slide-2">
+  <div class="glow glow-1"></div>
+  <div class="college-bar"></div>
+  <div class="slide-num">02 / 10</div>
+  <div class="tag">Problem Statement</div>
+  <div class="section-title">Why This Portal?</div>
+  <div class="section-sub">Challenges faced before this system was built</div>
+  <div class="list">
+    <div class="list-item">
+      <div class="list-icon">📂</div>
+      <div class="list-text"><strong>No Centralized Record</strong>Student achievements were scattered across spreadsheets, emails, and paper records with no single source of truth.</div>
+    </div>
+    <div class="list-item">
+      <div class="list-icon">🔍</div>
+      <div class="list-text"><strong>No Visibility</strong>Parents, faculty, and enterprises had no easy way to discover or verify student accomplishments.</div>
+    </div>
+    <div class="list-item">
+      <div class="list-icon">📊</div>
+      <div class="list-text"><strong>No Analytics</strong>Department had no data-driven insights on achievement trends, top performers, or category-wise performance.</div>
+    </div>
+    <div class="list-item">
+      <div class="list-icon">🏆</div>
+      <div class="list-text"><strong>No Recognition System</strong>Outstanding students were not ranked or recognized systematically based on verified achievements.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: OBJECTIVE -->
+<div class="slide slide-3">
+  <div class="glow glow-1"></div>
+  <div class="college-bar"></div>
+  <div class="slide-num">03 / 10</div>
+  <div class="tag">Objective</div>
+  <div class="section-title">What We Built</div>
+  <div class="section-sub">A full-stack web portal with 4 user roles and complete achievement lifecycle management</div>
+  <div class="cards cards-2">
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">Centralized Achievement Hub</div>
+      <div class="card-desc">Single platform to submit, verify, and showcase all student achievements across 17 categories.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <div class="card-title">Multi-Portal Access</div>
+      <div class="card-desc">Separate portals for Students, Faculty, Parents, and Enterprise users with role-based access.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <div class="card-title">Analytics Dashboard</div>
+      <div class="card-desc">Visual insights on achievement trends, batch-wise performance, and category breakdowns.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏅</div>
+      <div class="card-title">Scoring &amp; Rankings</div>
+      <div class="card-desc">Automated 100-point scoring engine that ranks students based on verified achievements.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: PORTALS -->
+<div class="slide slide-4">
+  <div class="glow glow-1"></div>
+  <div class="college-bar"></div>
+  <div class="slide-num">04 / 10</div>
+  <div class="tag">User Portals</div>
+  <div class="section-title">4 Role-Based Portals</div>
+  <div class="section-sub">Each user type gets a tailored experience with relevant features</div>
+  <div class="cards cards-4">
+    <div class="card">
+      <div class="card-icon">🎓</div>
+      <div class="card-title">Student</div>
+      <div class="card-desc">Submit achievements, track verification status, view personal dashboard and rankings.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">Faculty</div>
+      <div class="card-desc">Review and verify student submissions, manage department records and analytics.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏠</div>
+      <div class="card-title">Parent</div>
+      <div class="card-desc">Monitor child's academic journey, view achievements and performance in real time.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏢</div>
+      <div class="card-title">Enterprise</div>
+      <div class="card-desc">Discover top talent, explore student projects, and connect with the CSE department.</div>
+    </div>
+  </div>
+  <div style="margin-top:24px;">
+    <div class="section-sub" style="margin-bottom:10px;">Authentication Flow</div>
+    <div class="flow">
+      <div class="flow-step"><div class="f-icon">🌐</div><div class="f-label">Landing Page</div><div class="f-sub">Select Portal</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="f-icon">📝</div><div class="f-label">Register / Login</div><div class="f-sub">Fill Form</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="f-icon">🔐</div><div class="f-label">OTP Verify</div><div class="f-sub">Email / SMS</div></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="f-icon">✅</div><div class="f-label">Dashboard</div><div class="f-sub">Access Portal</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: KEY FEATURES -->
+<div class="slide slide-5">
+  <div class="glow glow-1"></div>
+  <div class="college-bar"></div>
+  <div class="slide-num">05 / 10</div>
+  <div class="tag">Key Features</div>
+  <div class="section-title">Core Modules</div>
+  <div class="section-sub">Everything built into the portal</div>
+  <div class="two-col">
+    <div class="left-col">
+      <div class="list">
+        <div class="list-item">
+          <div class="list-icon">🏆</div>
+          <div class="list-text"><strong>Top Performers Leaderboard</strong>Ranked list of students with highest verified achievement scores out of 100.</div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon">🔍</div>
+          <div class="list-text"><strong>Achievement Explorer</strong>Browse, search and filter all achievements by category, year, or batch.</div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon">📊</div>
+          <div class="list-text"><strong>Analytics Dashboard</strong>Visual charts showing trends across years, batches, and categories.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col">
+      <div class="list-item">
+        <div class="list-icon">📤</div>
+        <div class="list-text"><strong>Submit Achievement</strong>Students submit projects with proof; faculty verify and publish.</div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon">🤖</div>
+        <div class="list-text"><strong>AI Assistant</strong>Chat-based assistant to search and explore projects intelligently.</div>
+      </div>
+      <div class="list-item">
+        <div class="list-icon">🔔</div>
+        <div class="list-text"><strong>Notifications</strong>Real-time alerts for verification status, new achievements, and updates.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: ACHIEVEMENT CATEGORIES -->
+<div class="slide slide-6">
+  <div class="glow glow-1"></div>
+  <div class="college-bar"></div>
+  <div class="slide-num">06 / 10</div>
+  <div class="tag">Achievement Categories</div>
+  <div class="section-title">17 Categories Across 4 Groups</div>
+  <div class="section-sub">Every type of student achievement is tracked and scored</div>
+  <div class="cards cards-4">
+    <div class="card">
+      <div class="card-icon">💡</div>
+      <div class="card-title">Innovation</div>
+      <div class="card-desc">Hackathon · Ideathon · Startup · Project</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔬</div>
+      <div class="card-title">Research</div>
+      <div class="card-desc">Research Paper · Journal · Article · Patent</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚙️</div>
+      <div class="card-title">Technical</div>
+      <div class="card-desc">Coding Competition · Technical Comp · Paper Presentation</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">💼</div>
+      <div class="card-title">Professional</div>
+      <div class="card-desc">Internship · Certification · Workshop · Award · Prize</div>
+    </div>
+  </div>
+  <div style="margin-top:28px;">
+    <div class="section-sub" style="margin-bottom:10px;">Scoring Weights (out of 100)</div>
+    <div class="badge-row">
+      <div class="badge">Hackathon — 20 pts</div>
+      <div class="badge">Project — 15 pts</div>
+      <div class="badge">Research — 15 pts</div>
+      <div class="badge">Patent — 15 pts</div>
+      <div class="badge">Certification — 10 pts</div>
+      <div class="badge">Rating — 10 pts</div>
+      <div class="badge">Presentation — 5 pts</div>
+      <div class="badge">Leadership — 5 pts</div>
+      <div class="badge">Consistency — 5 pts</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: TECH STACK -->
+<div class="slide slide-7">
+  <div class="glow glow-1"></div>
+  <div class="college-bar"></div>
+  <div class="slide-num">07 / 10</div>
+  <div class="tag">Technology Stack</div>
+  <div class="section-title">Built With</div>
+  <div class="section-sub">Lightweight, no-framework approach — runs entirely in the browser</div>
+  <div class="two-col">
+    <div class="left-col">
+      <div class="list">
+        <div class="list-item">
+          <div class="list-icon">🌐</div>
+          <div class="list-text"><strong>Frontend</strong>HTML5, CSS3, Vanilla JavaScript — no frameworks, fully responsive design.</div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon">🐍</div>
+          <div class="list-text"><strong>Local Server</strong>Python HTTP Server (port 8080) — serves all static files locally.</div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon">⚡</div>
+          <div class="list-text"><strong>OTP Backend</strong>FastAPI (Python) on port 5000 — handles OTP generation and email delivery via Gmail SMTP.</div>
+        </div>
+        <div class="list-item">
+          <div class="list-icon">💾</div>
+          <div class="list-text"><strong>Data Storage</strong>SessionStorage for auth state. JS data store (data.js) simulates a backend database.</div>
+        </div>
+      </div>
+    </div>
+    <div class="right-col">
+      <div class="section-sub">Libraries &amp; Tools</div>
+      <div class="tech-row">
+        <div class="tech">Font Awesome 6.5</div>
+        <div class="tech">Google Fonts (Inter)</div>
+        <div class="tech">FastAPI</div>
+        <div class="tech">Uvicorn</div>
+        <div class="tech">Python smtplib</div>
+        <div class="tech">Pydantic</div>
+        <div class="tech">CSS Grid</div>
+        <div class="tech">CSS Flexbox</div>
+        <div class="tech">CSS Variables</div>
+        <div class="tech">SessionStorage API</div>
+        <div class="tech">Fetch API</div>
+        <div class="tech">SVG Animations</div>
+      </div>
+    </div>
+  </div>
+</div>
