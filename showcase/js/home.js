@@ -1,7 +1,7 @@
 // ── AUTH GUARD ──────────────────────────────────────────
 // Redirect to login if no session exists
 (function() {
-  var name = sessionStorage.getItem('portalUser');
+  var name = localStorage.getItem('portalUser');
   if (!name) {
     window.location.replace('../auth.html');
   }
@@ -10,17 +10,19 @@
 // ── SESSION HELPERS ─────────────────────────────────────
 function getSession() {
   return {
-    name:   sessionStorage.getItem('portalUser') || 'Student',
-    type:   sessionStorage.getItem('portalType') || 'student',
-    isNew:  sessionStorage.getItem('portalLogin') === 'true'
+    name:   localStorage.getItem('portalUser') || 'Student',
+    type:   localStorage.getItem('portalType') || 'student',
+    isNew:  localStorage.getItem('portalLogin') === 'true'
   };
 }
 
 function doLogout() {
-  sessionStorage.removeItem('portalUser');
-  sessionStorage.removeItem('portalType');
-  sessionStorage.removeItem('portalLogin');
-  sessionStorage.removeItem('portalRole');
+  localStorage.removeItem('portalUser');
+  localStorage.removeItem('portalType');
+  localStorage.removeItem('portalLogin');
+  localStorage.removeItem('portalRole');
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('portal');
   window.location.href = '../auth.html';
 }
 

@@ -364,7 +364,7 @@ function verifyOTP() {
     document.getElementById('verifyBtnSpinner').classList.add('hidden');
     btn.disabled = false;
     if (!r.ok) { errEl.textContent = r.j.message||'Invalid OTP.'; shakeBoxes(); return; }
-    if (r.j.token) { sessionStorage.setItem('authToken',r.j.token); sessionStorage.setItem('portal',currentPortal); }
+    if (r.j.token) { localStorage.setItem('authToken',r.j.token); localStorage.setItem('portal',currentPortal); }
     stopCountdown();
     showSuccess();
   })
@@ -437,9 +437,9 @@ function showSuccess() {
   else if (d.emailOrId)       name = d.emailOrId.split('@')[0];
   else if (d.mobile)          name = 'User';
   else if (d.email)           name = d.email.split('@')[0];
-  sessionStorage.setItem('portalUser',  name.trim());
-  sessionStorage.setItem('portalType',  currentPortal);
-  sessionStorage.setItem('portalLogin', 'true');
+  localStorage.setItem('portalUser',  name.trim());
+  localStorage.setItem('portalType',  currentPortal);
+  localStorage.setItem('portalLogin', 'true');
 
   showCard('successStep');
   requestAnimationFrame(function(){ document.getElementById('progressFill').style.width='100%'; });
@@ -461,8 +461,12 @@ var ss = document.createElement('style');
 ss.textContent = '@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}';
 document.head.appendChild(ss);
 
-// Auto-open from URL hash
+// Redirect to portal if already logged in
 (function(){
+  if (localStorage.getItem('portalUser')) {
+    window.location.replace('showcase/index.html');
+    return;
+  }
   var h = window.location.hash.replace('#','');
   if (['student','faculty','parent','enterprise'].indexOf(h) !== -1) openAuth(h);
 })();
